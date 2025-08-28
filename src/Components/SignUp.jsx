@@ -130,6 +130,7 @@ const readValues = () => {
 
   return (
   <div>
+    
       <div
         className="container p-5 pt-1 bg-light border rounded shadow mt-5 mb-5"
         style={{ maxWidth: "950px" }}
@@ -341,7 +342,7 @@ const readValues = () => {
               <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
                 <div className="d-flex justify-content-center">
                   <button
-                    className="btn btn-success px-4 w-25 mt-2 mb-3 p-2"
+                    className="btn btn-success px-4 w-100 border-overline mt-2 mb-3 p-2 my-btn"
                     onClick={readValues}
                   >
                     SignUp
