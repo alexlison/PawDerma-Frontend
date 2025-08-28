@@ -70,6 +70,7 @@ body {
   font-weight: 500;
 }
 
+
 /* Hover State */
 .my-btn:hover {
   background-color: var(--my-btn-hover-bg);
@@ -136,7 +137,7 @@ body {
 
 
 .signin-page {
-  background-image: url('https://sdmntpreastus.oaiusercontent.com/files/00000000-95b8-61f9-9f65-5a520aede97d/raw?se=2025-08-17T10%3A00%3A40Z&sp=r&sv=2024-08-04&sr=b&scid=154d3c0b-dc25-539d-9d21-2d55f35bb93d&skoid=31bc9c1a-c7e0-460a-8671-bf4a3c419305&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-16T23%3A48%3A12Z&ske=2025-08-17T23%3A48%3A12Z&sks=b&skv=2024-08-04&sig=DmT8ZmSStRi9%2BOrLjmUFFE4KQtI5i%2BfoCHyDFP384Gk%3D');
+  background-image: url('https://sdmntprpolandcentral.oaiusercontent.com/files/00000000-2364-620a-8ab0-62df1ded69c9/raw?se=2025-08-28T18%3A23%3A32Z&sp=r&sv=2024-08-04&sr=b&scid=8dce8aef-a3ce-5a14-991e-74596c94e6ca&skoid=60f2aa1f-3685-43ee-be37-d8c8d08d5a64&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-27T21%3A19%3A00Z&ske=2025-08-28T21%3A19%3A00Z&sks=b&skv=2024-08-04&sig=%2BgyVE3IMUQcJOd19OK%2B/vpQzyXtjMeef52DDrVYooyI%3D');
   background-size: cover;
   background-position: center;
   min-height: 100vh;
@@ -147,6 +148,8 @@ body {
 }
 
 
+
+
 .signin-container {
   position: relative;
   z-index: 1;
@@ -155,5 +158,5 @@ body {
   border-radius: 8px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px;
+  max-width: 200px;
 }
