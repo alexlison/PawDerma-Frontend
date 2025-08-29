@@ -221,6 +221,7 @@ const readValues = () => {
                   name="gender"
                   value={input.gender}
                   onChange={inputHandler}
+                  max={new Date().toISOString().split("T")[0]} 
                 >
                   <option value="" disabled>
                     Select Gender
