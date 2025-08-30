@@ -20,7 +20,7 @@ code {
   --my-primary-active: #8a2938;
   --my-page-bg: white;
   --my-text-light: white;
-
+  --my-formheading : #ede5e5;
   /* Button Variables */
   --my-btn-bg: var(--my-primary);
   --my-btn-color: var(--my-text-light);
@@ -50,6 +50,30 @@ body {
 }
 
 /* ===== Universal Button Classes ===== */
+.my-btn2 {
+  /* Structure */
+  display: flex;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  background-color: var(--my-btn-bg);
+  color: var(--my-btn-color);
+  border: 1px solid var(--my-btn-border);
+  
+  /* Effects */
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  font-weight: 500;
+}
+
+.my-btn2:hover {
+  background-color: var(--my-btn-hover-bg);
+  border-color: var(--my-btn-hover-border);
+  color: var(--my-btn-color);
+}
+
 .my-btn {
   /* Structure */
   display: inline-block;
@@ -69,8 +93,11 @@ body {
   user-select: none;
   font-weight: 500;
 }
+.my-hr{
+color: #8a2938;
+border: 1px solid #a2a0a0;
 
-
+}
 /* Hover State */
 .my-btn:hover {
   background-color: var(--my-btn-hover-bg);
@@ -91,7 +118,22 @@ body {
   cursor: not-allowed;
 }
 
-
+.my-formheading
+{
+   background-color: var( --my-formheading);
+   padding: 0.3rem;
+   align-self: center;
+   font-size: larger;
+   font-weight: 700;
+   color: #302c2cde;
+   
+   justify-self: center;
+   padding-bottom: 0.7rem;
+   padding-top: 0.7rem;
+   border-radius: 0.2cm;
+   width: 6cm;
+   
+}
 
 /* ===== HYPERLINK STYLES ===== */
 .my-link {
