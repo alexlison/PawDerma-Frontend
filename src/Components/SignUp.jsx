@@ -135,7 +135,8 @@ const readValues = () => {
         className="container p-5 pt-1 bg-light border rounded shadow mt-5 mb-5"
         style={{ maxWidth: "950px" }}
       >
-        <h4 className="m-5 text-center">SignUp</h4>
+              <h4 className="m-4 mt-5 my-formheading text-center">SignUp</h4>
+        <hr className="mb-5 mt-4 my-hr" />
         <div className="row">
           <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
             <div className="row g-4">
@@ -341,14 +342,12 @@ const readValues = () => {
               </div>
 
               <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-                <div className="d-flex justify-content-center">
-                  <button
-                    className="btn btn-success px-4 w-100 border-overline mt-2 mb-3 p-2 my-btn"
-                    onClick={readValues}
-                  >
-                    SignUp
-                  </button>
+              <div className="col-12 d-flex justify-content-end">
+              <button className="btn btn-success px-4 w-45 border-overline mt-2 mb-3 p-2 my-btn2" onClick={readValues}>
+                 <i className="bi bi-person-plus me-2"></i> SignUp
+                </button>
                 </div>
+
               </div>
             </div>
           </div>

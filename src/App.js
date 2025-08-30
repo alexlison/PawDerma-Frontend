@@ -4,6 +4,7 @@ import SignUp from './Components/SignUp';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SignIn from './Components/SignIn';
 import DoctorSignUp from './Components/DoctorSignUp';
+import AttenderSignUp from './Components/AttenderSignUp';
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
       <Routes>
         <Route path='/' element = { <SignIn /> }  />
         <Route path='SignUp' element = { <SignUp /> }  />
-        <Route path='doctorSignin' element = { <DoctorSignUp />}/>
+        <Route path='doctorSignup' element = { <DoctorSignUp />} />
+        <Route path='attenderSignup' element= { <AttenderSignUp /> } />
       
       </Routes>
       </BrowserRouter>
