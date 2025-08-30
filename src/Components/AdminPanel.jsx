@@ -1,0 +1,149 @@
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
+const AdminPanel = () => {
+  const [activePage, setActivePage] = useState("dashboard");
+
+  const renderContent = () => {
+    switch (activePage) {
+      case "dashboard":
+        return <h3>📊 Dashboard Content</h3>;
+      case "cats":
+        return <h3>🐱 Cats Content</h3>;
+      case "catowners":
+        return <h3>👤 Catowners Content</h3>;
+      case "doctors":
+        return <h3>🩺 Doctors Content</h3>;
+      case "attenders":
+        return <h3>👥 Attenders Content</h3>;
+      case "appointments":
+        return <h3>📅 Appointments Content</h3>;
+      case "sales":
+        return <h3>📈 Sales Report Content</h3>;
+      default:
+        return <h3>Welcome to PawDerma Admin Panel</h3>;
+    }
+  };
+
+  return (
+    <div className="container-fluid">
+      <div className="row">
+        {/* Sidebar */}
+        <div className="col-12 col-lg-2 p-0">
+          <div
+            className="collapse d-lg-flex flex-column p-3 min-vh-100"
+            id="sidebarMenu"
+            style={{ backgroundColor: "#f5edef" }}
+          >
+            <div className="text-center mb-4">
+              <span className="badge admin-box fs-6 px-4 py-3 rounded">
+                <i className="fa fa-cogs"></i> Admin Panel
+              </span>
+            </div>
+
+            <ul className="nav nav-pills flex-column mt-3 mb-auto gap-2">
+              <li
+                className={`my-sidebarhr ${
+                  activePage === "dashboard" ? "selected" : ""
+                }`}
+                onClick={() => setActivePage("dashboard")}
+              >
+                <button className="btn nav-link text-dark text-start">
+                  <i className="bi bi-speedometer2 me-2"></i> Dashboard
+                </button>
+              </li>
+              <li
+                className={`my-sidebarhr ${
+                  activePage === "cats" ? "selected" : ""
+                }`}
+                onClick={() => setActivePage("cats")}
+              >
+                <button className="btn nav-link text-dark text-start">
+                  <i className="fa-solid fa-cat me-2"></i> Cats
+                </button>
+              </li>
+              <li
+                className={`my-sidebarhr ${
+                  activePage === "catowners" ? "selected" : ""
+                }`}
+                onClick={() => setActivePage("catowners")}
+              >
+                <button className="btn nav-link text-dark text-start">
+                  <i className="bi bi-people me-2"></i> Catowners
+                </button>
+              </li>
+              <li
+                className={`my-sidebarhr ${
+                  activePage === "doctors" ? "selected" : ""
+                }`}
+                onClick={() => setActivePage("doctors")}
+              >
+                <button className="btn nav-link text-dark text-start">
+                  <i className="bi bi-heart-pulse me-2"></i> Doctors
+                </button>
+              </li>
+              <li
+                className={`my-sidebarhr ${
+                  activePage === "attenders" ? "selected" : ""
+                }`}
+                onClick={() => setActivePage("attenders")}
+              >
+                <button className="btn nav-link text-dark text-start">
+                  <i className="bi bi-person-badge me-2"></i> Attenders
+                </button>
+              </li>
+              <li
+                className={`my-sidebarhr ${
+                  activePage === "appointments" ? "selected" : ""
+                }`}
+                onClick={() => setActivePage("appointments")}
+              >
+                <button className="btn nav-link text-dark text-start">
+                  <i className="bi bi-calendar-check me-2"></i> Appointments
+                </button>
+              </li>
+              <li
+                className={`my-sidebarhr ${
+                  activePage === "sales" ? "selected" : ""
+                }`}
+                onClick={() => setActivePage("sales")}
+              >
+                <button className="btn nav-link text-dark text-start">
+                  <i className="bi bi-bar-chart-line me-2"></i> Sales Report
+                </button>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="col p-0">
+          {/* Navbar */}
+          <nav className="navbar px-3 py-3 shadow-sm my-navbar">
+            <div className="container-fluid d-flex justify-content-between align-items-center">
+              <button
+                className="btn d-lg-none"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#sidebarMenu"
+              >
+                <i className="bi bi-list fs-3"></i>
+              </button>
+
+              <h5 className="m-0 fw-bold text-dark">
+                <i className="fa-solid fa-paw me-2"></i> PawDerma
+              </h5>
+              <Link to="/logout" className="my-btn">
+                <i className="bi bi-box-arrow-right me-1"></i> Logout
+              </Link>
+            </div>
+          </nav>
+
+          {/* Center Content */}
+          <div className="p-4 pt-5 pl-5">{renderContent()}</div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default AdminPanel;
