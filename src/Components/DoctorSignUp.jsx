@@ -116,7 +116,8 @@ const DoctorSignUp = () => {
         className="container  p-5 pt-1 bg-light border rounded shadow mt-5 mb-5"
         style={{ maxWidth: "950px" }}
       >
-        <h4 className="m-5 text-center bold">Add Doctor</h4>
+        <h4 className="m-4 mt-5 my-formheading text-center">Add Doctor</h4>
+        <hr className="mb-5 mt-4 my-hr" />
         <div className="row">
           <div className="col col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
             <div className="row g-3">
@@ -360,7 +361,7 @@ const DoctorSignUp = () => {
                   className={`form-control ${
                     errors.password ? "is-invalid" : ""
                   }`}
-                  placeholder="Enter Password"
+                  placeholder="Enter password (min 4 characters)"
                   name="password"
                   value={input.password}
                   onChange={inputHandler}
