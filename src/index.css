@@ -21,6 +21,8 @@ code {
   --my-page-bg: white;
   --my-text-light: white;
   --my-formheading : #ede5e5;
+  --my-secondary :#e5dee0;
+  --navbar:#e2dbdb;
   /* Button Variables */
   --my-btn-bg: var(--my-primary);
   --my-btn-color: var(--my-text-light);
@@ -37,6 +39,7 @@ code {
   --my-hyper-links:var(--my-primary-active);
 }
 
+
 /* Base Page Styles */
 body {
   background-color: var(--my-page-bg);
@@ -44,6 +47,14 @@ body {
 }
 
 /* login icon styles */
+
+.my-secondary::selection,.my-secondary:hover {
+   background-color: var(--navbar);
+  border-radius: 0.3rem
+}
+.my-navbar{
+  background-color: var(--navbar);
+}
 
 .my-icon{
   color: var(--my-icon);
@@ -74,6 +85,10 @@ body {
   color: var(--my-btn-color);
 }
 
+.admin-box{
+  background-color: #3d3b3b;
+}
+
 .my-btn {
   /* Structure */
   display: inline-block;
@@ -98,6 +113,26 @@ color: #8a2938;
 border: 1px solid #a2a0a0;
 
 }
+.my-sidebarhr{
+color: #c98e5e;
+border: 1px solid #e7caca;
+
+
+}
+
+.my-sidebarhr::selection,.my-sidebarhr:hover{
+  background-color: #d9d1d1;
+}
+
+.my-sidebarhr.selected {
+  background-color: #ded6d6;
+ color: #e1d4ca;
+border: 1px solid #e7d5d5;
+}
+
+
+
+
 /* Hover State */
 .my-btn:hover {
   background-color: var(--my-btn-hover-bg);
