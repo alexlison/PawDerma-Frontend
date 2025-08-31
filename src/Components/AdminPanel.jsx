@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import ViewCatOwners from "./ViewCatOwners";
 
 const AdminPanel = () => {
 
@@ -39,7 +40,7 @@ const logout = () => {
       case "cats":
         return <h3 className="text-center mt-3">🐱 Cats</h3>;
       case "catowners":
-        return <h3 className="text-center mt-3">👤 Catowners</h3>;
+        return <ViewCatOwners />;
       case "doctors":
         return <h3 className="text-center mt-3">🩺 Doctors</h3>;
       case "attenders":
@@ -62,9 +63,9 @@ const logout = () => {
         {/* Sidebar */}
         <div className="col-12 col-lg-2 p-0">
           <div
-            className="collapse d-lg-flex flex-column p-3 min-vh-100"
+            className="collapse d-lg-flex flex-column p-3 min-vh-100 my-sidebar-bg"
             id="sidebarMenu"
-            style={{ backgroundColor: "#f5edef" }}
+           
           >
             <div className="text-center mb-4">
               <span className="badge admin-box fs-6 px-4 py-3 rounded">
