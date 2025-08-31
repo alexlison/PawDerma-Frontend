@@ -12,6 +12,7 @@ code {
     monospace;
 }
 
+
 /* ===== Universal Theme CSS ===== */
 :root {
   /* Color Variables */
@@ -39,7 +40,15 @@ code {
   --my-hyper-links:var(--my-primary-active);
 }
 
+.my-font{
 
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 600;
+  font-size: 28px;
+  color: #959292;
+  text-align: center;
+  margin-top: 2rem;
+}
 /* Base Page Styles */
 body {
   background-color: var(--my-page-bg);
