@@ -24,6 +24,7 @@ code {
   --my-formheading : #ede5e5;
   --my-secondary :#e5dee0;
   --navbar:#e2dbdb;
+  --sidebar-bg :#eef0f1b3;
   /* Button Variables */
   --my-btn-bg: var(--my-primary);
   --my-btn-color: var(--my-text-light);
@@ -32,6 +33,7 @@ code {
   --my-btn-hover-border: var(--my-primary-hover);
   --my-btn-active-bg: var(--my-primary-active);
   --my-btn-shadow: 0 0 0 0.25rem rgba(199, 59, 80, 0.5);
+  --my-table-color :#cac0c0;
 
   /* icon */
   --my-icon : var(--my-primary);
@@ -39,6 +41,8 @@ code {
   /* Hyper links */
   --my-hyper-links:var(--my-primary-active);
 }
+
+
 
 .my-font{
 
@@ -53,6 +57,16 @@ code {
 body {
   background-color: var(--my-page-bg);
   color: #333; /* Default text color */
+}
+
+.my-table{
+   color: var(--my-table-color);
+   
+}
+.my-table thead th {
+  background-color:#504e4e;  /* your desired color */
+  color: white;               /* text color */
+  text-align: center;         /* optional */
 }
 
 /* login icon styles */
@@ -122,21 +136,25 @@ color: #8a2938;
 border: 1px solid #a2a0a0;
 
 }
+
+.my-sidebar-bg{
+  background-color: var(--sidebar-bg);
+}
 .my-sidebarhr{
-color: #c98e5e;
-border: 1px solid #e7caca;
+color: #c9c6c6;
+border: 1px solid #d0c9c9;
 
 
 }
 
 .my-sidebarhr::selection,.my-sidebarhr:hover{
-  background-color: #d9d1d1;
+  background-color: #d0c6c6;
 }
 
 .my-sidebarhr.selected {
-  background-color: #ded6d6;
+  background-color: #d3c8c8;
  color: #e1d4ca;
-border: 1px solid #e7d5d5;
+border: 1px solid #eee9e9;
 }
 
 
@@ -246,3 +264,17 @@ border: 1px solid #e7d5d5;
   width: 100%;
   max-width: 200px;
 }
+
+.toggle-cell {
+  cursor: pointer;
+ 
+}
+
+.toggle-icon {
+  font-size: 1.5rem;
+  width:2cm;
+  
+
+}
+
+

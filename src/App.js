@@ -6,6 +6,7 @@ import SignIn from './Components/SignIn';
 import DoctorSignUp from './Components/DoctorSignUp';
 import AttenderSignUp from './Components/AttenderSignUp';
 import AdminPanel from './Components/AdminPanel';
+import ViewCatOwners from './Components/ViewCatOwners';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path='doctorSignup' element = { <DoctorSignUp />} />
         <Route path='attenderSignup' element= { <AttenderSignUp /> } />
         <Route path='adminPanel' element= { <AdminPanel /> } />
+        <Route path='viewCatOwners' element= { <ViewCatOwners /> } />
         
       
       </Routes>
