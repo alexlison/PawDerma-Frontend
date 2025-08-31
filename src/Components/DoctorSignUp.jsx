@@ -3,7 +3,13 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const DoctorSignUp = () => {
+
   const navigate = useNavigate();
+
+
+  const [token,changeToken] = useState(sessionStorage.getItem("token"))
+
+  console.log("Token:", token);
 
   const [input, changeInput] = useState({
     fname: "",
@@ -75,7 +81,7 @@ const DoctorSignUp = () => {
         alert("Password and Confirm Password do not match!");
         return;
       }
-
+      
       let newInput = {
         fname: input.fname,
         mname: input.mname,
@@ -91,8 +97,9 @@ const DoctorSignUp = () => {
       };
 
       axios
-        .post("http://localhost:4000/doctorSignUp", newInput)
+        .post("http://localhost:4000/doctorSignUp", newInput,{ headers : { token:token,"Content-Type":"application/json" } } ) 
         .then((response) => {
+
           if (response.data.Status === "Success") {
             navigate("/viewDoctor");
           } else if (response.data.Status === "EmailExists") {
