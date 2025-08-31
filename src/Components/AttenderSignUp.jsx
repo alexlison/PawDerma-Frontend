@@ -1,9 +1,23 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const AttenderSignUp = () => {
+
   const navigate = useNavigate();
+
+  const [token,changeToken] = useState(sessionStorage.getItem("token"))
+
+  const[userType,changeUserType] = useState(sessionStorage.getItem("userType"))
+
+  useEffect(() => {
+
+    if(!token || userType !== 'admin')
+    {
+      alert("Access denied! Only admins can access this page.");
+      navigate("/"); 
+    }
+  },[token,userType,navigate]); //dependency array if any of the three change 
 
   const [input, changeInput] = useState({
     Name: "",
@@ -80,7 +94,7 @@ const AttenderSignUp = () => {
       }
 
       axios
-        .post("http://localhost:4000/attenderSignup", newInput)
+        .post("http://localhost:4000/attenderSignup", newInput,{ headers : { token:token,"Content-Type":"application/json" } })
         .then((response) => {
           if (response.data.Status === "Success") {
             navigate("/viewAttenders");
