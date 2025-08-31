@@ -73,13 +73,13 @@ const readValues = () =>{
            if (userType === "cat_owner") {
             navigate("/home");
           } else if (userType === "doctor") {
-            navigate("/doctorhome");
+            navigate("/doctorPanel");
           } else if (userType === "attender") {
-            navigate("/attenderhome");
+            navigate("/attenderPanel");
           } else if (userType === "admin") {
-            navigate("/adminhome");
+            navigate("/adminPanel");
           } else {
-            navigate("/home");
+            navigate("/");
           }
 
         
