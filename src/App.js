@@ -8,6 +8,7 @@ import AttenderSignUp from './Components/AttenderSignUp';
 import AdminPanel from './Components/AdminPanel';
 import ViewCatOwners from './Components/ViewCatOwners';
 import ViewDoctors from './Components/ViewDoctors';
+import ViewAttenders from './Components/ViewAttenders';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='adminPanel' element= { <AdminPanel /> } />
         <Route path='viewCatOwners' element= { <ViewCatOwners /> } />
         <Route path='viewDoctors' element= { <ViewDoctors /> } />
+        <Route path='viewAttenders' element= { <ViewAttenders /> } />
         
       
       </Routes>
