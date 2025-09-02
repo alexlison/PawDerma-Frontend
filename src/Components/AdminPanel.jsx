@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ViewCatOwners from "./ViewCatOwners";
+import ViewDoctors from "./ViewDoctors";
 
 const AdminPanel = () => {
 
@@ -33,6 +34,8 @@ const logout = () => {
 
   const [activePage, setActivePage] = useState("");
 
+  console.log("token --> ",token)
+
   const renderContent = () => {
     switch (activePage) {
       case "dashboard":
@@ -42,7 +45,7 @@ const logout = () => {
       case "catowners":
         return <ViewCatOwners />;
       case "doctors":
-        return <h3 className="text-center mt-3">🩺 Doctors</h3>;
+        return <ViewDoctors />
       case "attenders":
         return <h3 className="text-center mt-3">👥 Attenders</h3>;
       case "appointments":
@@ -170,7 +173,6 @@ const logout = () => {
             </div>
           </nav>
 
-          {/* Center Content */}
           <div className="p-4  pl-5">{renderContent()}</div>
         </div>
       </div>
