@@ -18,6 +18,7 @@ function App() {
          {/* Public Routes */}
         <Route path='/' element = { <SignIn /> }  />
         <Route path='SignUp' element = { <SignUp /> }  />
+
          <Route path="doctorSignup" element={<DoctorSignUp />} />
          <Route path="attenderSignup" element={<AttenderSignUp />} />
     
@@ -29,6 +30,7 @@ function App() {
           <Route path="attenders" element={<ViewAttenders />} />
        
         </Route>
+
       
       </Routes>
       </BrowserRouter>
