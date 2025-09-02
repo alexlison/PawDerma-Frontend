@@ -165,8 +165,6 @@ border: 1px solid #e6c3c9;
 }
 
 
-
-
 /* Hover State */
 .my-btn:hover {
   background-color: var(--my-btn-hover-bg);
@@ -282,6 +280,34 @@ border: 1px solid #e6c3c9;
   width:2cm;
   
 
+}
+
+
+.my-add-btn{
+
+  padding: 0.2rem;
+  padding-left: 0.8rem;
+  padding-right: 0.6rem;
+  padding-bottom: 0.3rem;
+  margin-bottom: 0;
+
+  border-radius: 0.7rem;
+  background-color: #e9dede;
+  
+  
+}
+.my-add-btn .icon{
+  color: #c0aeae;
+}
+
+.my-add-btn:hover{
+  background-color: #dad5d5;
+  cursor: pointer;
+  
+}
+.my-add-btn .icon:hover{
+ color: #c0aeae;
+ cursor: pointer;
 }
 
 

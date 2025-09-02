@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ViewDoctors = () => {
   const navigate = useNavigate();
@@ -61,7 +61,7 @@ const ViewDoctors = () => {
     fetchData();
   }, []);
 
-  // 🔹 Calculate real experience
+  //  Calculate real experience
   const calculateExperience = (baseExp, joinDate) => {
     if (!joinDate) return `${baseExp} Year${baseExp !== 1 ? "s" : ""}`;
 
@@ -86,7 +86,7 @@ const ViewDoctors = () => {
     return yearText + monthText;
   };
 
-  // 🔹 Format date properly (DD-MM-YYYY)
+  //  Format date properly (DD-MM-YYYY)
   const formatDate = (dateString) => {
     if (!dateString) return "N/A";
     const date = new Date(dateString);
@@ -101,8 +101,18 @@ const ViewDoctors = () => {
     <div className="container-fluid">
       <div className="row">
         <div className="col-12">
-          <h3 className="text-center bi bi-heart-pulse mt-3 mb-3 fs-5"> <span className="px-1 fw-semi-bold fs-4 py-5">  Doctors List</span> 
-          </h3>
+      <div className="d-flex justify-content-between align-items-center mb-3">
+            <h3 className="bi bi-heart-pulse m-0 fs-5 text-center flex-grow-1">
+              <span className="px-1 fw-semi-bold fs-4">Doctors List</span>
+            </h3>
+
+
+            <Link to = "/doctorSignup" className="my-add-btn">
+              <i className="bi bi-plus-circle me-1 icon"></i> 
+            </Link>
+          </div>
+
+          
           <div className="table-responsive" style={{ fontSize: "0.85rem" }}>
             <table className="table my-table small-table table-sm table-striped align-middle text-center">
               <thead className="table-light">

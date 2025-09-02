@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ViewAttenders = () => {
   const navigate = useNavigate();
@@ -78,8 +78,15 @@ const ViewAttenders = () => {
     <div className="container-fluid">
       <div className="row">
         <div className="col-12">
-          <h3 className="text-center bi bi-person-badge mt-3 mb-3 fs-5"> <span className="px-1 fw-semi-bold fs-4 py-4">  Attenders List</span> 
-          </h3>
+          <div className="d-flex justify-content-between align-items-center mb-3">
+
+            <h3 className="text-center flex-grow-1 bi bi-person-badge mt-3 mb-1 fs-5"> <span className="px-1 fw-semi-bold fs-4 py-4">  Attenders List</span> 
+             </h3>
+
+            <Link to = "/attenderSignup" className="my-add-btn">
+              <i className="bi bi-plus-circle me-1 icon"></i> 
+            </Link>
+         </div>
           <div className="table-responsive" style={{ fontSize: "0.85rem" }}>
             <table className="table my-table small-table table-sm table-striped align-middle text-center">
               <thead className="table-light">

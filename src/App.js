@@ -15,15 +15,22 @@ function App() {
     <div>
       <BrowserRouter>
       <Routes>
+         {/* Public Routes */}
         <Route path='/' element = { <SignIn /> }  />
         <Route path='SignUp' element = { <SignUp /> }  />
-        <Route path='doctorSignup' element = { <DoctorSignUp />} />
-        <Route path='attenderSignup' element= { <AttenderSignUp /> } />
-        <Route path='adminPanel' element= { <AdminPanel /> } />
-        <Route path='viewCatOwners' element= { <ViewCatOwners /> } />
-        <Route path='viewDoctors' element= { <ViewDoctors /> } />
-        <Route path='viewAttenders' element= { <ViewAttenders /> } />
-        
+
+         <Route path="doctorSignup" element={<DoctorSignUp />} />
+         <Route path="attenderSignup" element={<AttenderSignUp />} />
+    
+       
+           {/* Admin Routes with nested pages */}
+        <Route path="adminPanel" element={<AdminPanel />}>
+          <Route path="catowners" element={<ViewCatOwners />} />
+          <Route path="doctors" element={<ViewDoctors />} />
+          <Route path="attenders" element={<ViewAttenders />} />
+       
+        </Route>
+
       
       </Routes>
       </BrowserRouter>

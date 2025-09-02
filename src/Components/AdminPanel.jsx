@@ -1,75 +1,39 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import ViewCatOwners from "./ViewCatOwners";
-import ViewDoctors from "./ViewDoctors";
-import ViewAttenders from "./ViewAttenders";
+import { Link, useNavigate, Outlet } from "react-router-dom";
 
 const AdminPanel = () => {
+  const navigate = useNavigate();
 
-  const navigate = useNavigate()
-
-
-  //Token Authentication
-
-  const [token,changeToken] = useState(sessionStorage.getItem("token"))
-
-  const[userType,changeUserType] = useState(sessionStorage.getItem("userType"))
+  const [token, changeToken] = useState(sessionStorage.getItem("token"));
+  const [userType, changeUserType] = useState(sessionStorage.getItem("userType"));
 
   useEffect(() => {
-
-    if(!token || userType !== 'admin')
-    {
+    if (!token || userType !== "admin") {
       alert("Access denied! Only admins can access this page.");
-      navigate("/"); 
+      navigate("/");
     }
-  },[token,userType,navigate]);
+  }, [token, userType, navigate]);
 
-
-//Logout
-
-const logout = () => {
-
-  sessionStorage.clear()
-  navigate("/")
-}
+  const logout = () => {
+    sessionStorage.clear();
+    navigate("/");
+  };
 
   const [activePage, setActivePage] = useState("");
 
-  console.log("token --> ",token)
-
-  const renderContent = () => {
-    switch (activePage) {
-      case "dashboard":
-        return <h3 className="text-center mt-3">📊 Dashboard</h3>;
-      case "cats":
-        return <h3 className="text-center mt-3">🐱 Cats</h3>;
-      case "catowners":
-        return <ViewCatOwners />;
-      case "doctors":
-        return <ViewDoctors />
-      case "attenders":
-        return <ViewAttenders />
-      case "appointments":
-        return <h3 className="text-center mt-3">📅 Appointments</h3>;
-      case "sales":
-        return <h3 className="text-center mt-3">📈 Sales Report</h3>;
-      default :
-        return <h3 className="text-center mt-4 pt-2 my-font ">  Welcome to Admin Panel 🙂 </h3>;
-    }
-  };
-
   return (
-    <div className="container-fluid" style={{ userSelect: "none" }}  
-      onCopy={(e) => e.preventDefault()}  
-      onCut={(e) => e.preventDefault()}   
-      onPaste={(e) => e.preventDefault()} >
+    <div
+      className="container-fluid"
+      style={{ userSelect: "none" }}
+      onCopy={(e) => e.preventDefault()}
+      onCut={(e) => e.preventDefault()}
+      onPaste={(e) => e.preventDefault()}
+    >
       <div className="row">
-        {/* Sidebar */}
         <div className="col-12 col-lg-2 p-0">
           <div
             className="collapse d-lg-flex flex-column p-3 min-vh-100 my-sidebar-bg"
             id="sidebarMenu"
-           
           >
             <div className="text-center mb-4">
               <span className="badge admin-box fs-6 px-4 py-3 rounded">
@@ -84,9 +48,9 @@ const logout = () => {
                 }`}
                 onClick={() => setActivePage("dashboard")}
               >
-                <button className="btn nav-link text-dark text-start">
+                <Link to="dashboard" className="btn nav-link text-dark text-start">
                   <i className="bi bi-speedometer2 me-2"></i> Dashboard
-                </button>
+                </Link>
               </li>
               <li
                 className={`my-sidebarhr ${
@@ -94,9 +58,9 @@ const logout = () => {
                 }`}
                 onClick={() => setActivePage("cats")}
               >
-                <button className="btn nav-link text-dark text-start">
+                <Link to="cats" className="btn nav-link text-dark text-start">
                   <i className="fa-solid fa-cat me-2"></i> Cats
-                </button>
+                </Link>
               </li>
               <li
                 className={`my-sidebarhr ${
@@ -104,9 +68,9 @@ const logout = () => {
                 }`}
                 onClick={() => setActivePage("catowners")}
               >
-                <button className="btn nav-link text-dark text-start">
+                <Link to="catowners" className="btn nav-link text-dark text-start">
                   <i className="bi bi-people me-2"></i> Catowners
-                </button>
+                </Link>
               </li>
               <li
                 className={`my-sidebarhr ${
@@ -114,9 +78,9 @@ const logout = () => {
                 }`}
                 onClick={() => setActivePage("doctors")}
               >
-                <button className="btn nav-link text-dark text-start">
+                <Link to="doctors" className="btn nav-link text-dark text-start">
                   <i className="bi bi-heart-pulse me-2"></i> Doctors
-                </button>
+                </Link>
               </li>
               <li
                 className={`my-sidebarhr ${
@@ -124,9 +88,9 @@ const logout = () => {
                 }`}
                 onClick={() => setActivePage("attenders")}
               >
-                <button className="btn nav-link text-dark text-start">
+                <Link to="attenders" className="btn nav-link text-dark text-start">
                   <i className="bi bi-person-badge me-2"></i> Attenders
-                </button>
+                </Link>
               </li>
               <li
                 className={`my-sidebarhr ${
@@ -134,9 +98,9 @@ const logout = () => {
                 }`}
                 onClick={() => setActivePage("appointments")}
               >
-                <button className="btn nav-link text-dark text-start">
+                <Link to="appointments" className="btn nav-link text-dark text-start">
                   <i className="bi bi-calendar-check me-2"></i> Appointments
-                </button>
+                </Link>
               </li>
               <li
                 className={`my-sidebarhr ${
@@ -144,16 +108,15 @@ const logout = () => {
                 }`}
                 onClick={() => setActivePage("sales")}
               >
-                <button className="btn nav-link text-dark text-start">
+                <Link to="sales" className="btn nav-link text-dark text-start">
                   <i className="bi bi-bar-chart-line me-2"></i> Sales Report
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="col p-0">
-          {/* Navbar */}
           <nav className="navbar px-3 py-3 shadow-sm my-navbar">
             <div className="container-fluid d-flex justify-content-between align-items-center">
               <button
@@ -174,7 +137,9 @@ const logout = () => {
             </div>
           </nav>
 
-          <div className="p-4  pl-5">{renderContent()}</div>
+          <div className="p-4 pl-5">
+            <Outlet />
+          </div>
         </div>
       </div>
     </div>
