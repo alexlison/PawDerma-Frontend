@@ -70,12 +70,24 @@ const ViewCatOwners = () => {
     fetchData();
   }, []);
 
+
+    const formatDate = (dateString) => {
+    if (!dateString) return "N/A";
+    const date = new Date(dateString);
+    return date.toLocaleDateString("en-GB", {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    });
+  };
+
+
   return (
     <div>
       <div className="container">
         <div className="row">
           <div className="col col-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-            <h3 className="text-center bi bi-people-fill mt-3 mb-4 pb-2 fs-3"> Catowners</h3>
+            <h3 className="text-center bi bi-people-fill mt-3 mb-3 pb-1 fs-3"> Catowners</h3>
             <div className="table-responsive">
             <table className="table my-table table-striped">
               <thead>
@@ -86,6 +98,7 @@ const ViewCatOwners = () => {
                   <th scope="col">Phone</th>
                   <th scope="col">Gender</th>
                   <th scope="col">Address</th>
+                  <th scope="col">Join Date</th>
                   <th scope="col">Status</th>
                   <th scope="col">Action</th>
                 </tr>
@@ -106,6 +119,7 @@ const ViewCatOwners = () => {
                         {value.address.street}, {value.address.city},{" "}
                         {value.address.state} - {value.address.pincode}
                       </td>
+                      <td><td>{formatDate(value.join_date)}</td></td>
                       <td>{value.status ? "Active" : "Inactive"}</td>
                       <td
                         className="position-relative text-center toggle-cell"

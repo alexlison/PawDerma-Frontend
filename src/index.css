@@ -64,9 +64,16 @@ body {
    
 }
 .my-table thead th {
-  background-color:#504e4e;  /* your desired color */
-  color: white;               /* text color */
-  text-align: center;         /* optional */
+  background-color:#504e4e;  
+  color: white;               
+  text-align: center;      
+}
+
+.my-table td{
+  font-size: 14.5px;
+}
+.my-table th{
+  font-size: 15px;
 }
 
 /* login icon styles */
@@ -154,7 +161,7 @@ border: 1px solid #d0c9c9;
 .my-sidebarhr.selected {
   background-color: #d3c8c8;
  color: #e1d4ca;
-border: 1px solid #eee9e9;
+border: 1px solid #e6c3c9;
 }
 
 
@@ -277,4 +284,15 @@ border: 1px solid #eee9e9;
 
 }
 
+
+
+.small-table td {
+  font-size: 14px;   
+  padding: 0.7rem 8px;  
+}
+
+.small-table th{
+    font-size: 13.5px;
+    padding: 12px 8px; 
+}
 
