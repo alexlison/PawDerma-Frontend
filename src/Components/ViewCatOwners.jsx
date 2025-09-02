@@ -87,7 +87,7 @@ const ViewCatOwners = () => {
       <div className="container">
         <div className="row">
           <div className="col col-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
-            <h3 className="text-center bi bi-people-fill mt-3 mb-3 pb-1 fs-3"> Catowners</h3>
+            <h3 className="text-center bi bi-people-fill mt-3 mb-3 pb-1 fs-3"> Catowners List</h3>
             <div className="table-responsive">
             <table className="table my-table table-striped">
               <thead>

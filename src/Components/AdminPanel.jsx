@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import ViewCatOwners from "./ViewCatOwners";
 import ViewDoctors from "./ViewDoctors";
+import ViewAttenders from "./ViewAttenders";
 
 const AdminPanel = () => {
 
@@ -47,7 +48,7 @@ const logout = () => {
       case "doctors":
         return <ViewDoctors />
       case "attenders":
-        return <h3 className="text-center mt-3">👥 Attenders</h3>;
+        return <ViewAttenders />
       case "appointments":
         return <h3 className="text-center mt-3">📅 Appointments</h3>;
       case "sales":
