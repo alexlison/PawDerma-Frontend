@@ -322,3 +322,84 @@ border: 1px solid #e6c3c9;
     padding: 12px 8px; 
 }
 
+
+/* Additional styles for PawDerma homepage */
+.navbar-brand {
+  font-size: 1.8rem;
+}
+
+.service-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px;
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.hero-section {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.display-4 {
+  color: var(--my-primary);
+  line-height: 1.2;
+}
+
+.lead {
+  color: #666;
+  font-size: 1.25rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-section {
+    text-align: center;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+  }
+  
+  .display-4 {
+    font-size: 2.5rem;
+  }
+  
+  .service-card {
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Profile icon hover effect */
+.profile-icon {
+  transition: all 0.3s ease;
+}
+
+.profile-icon:hover {
+  transform: scale(1.05);
+  background-color: var(--my-primary-hover) !important;
+}
+
+.my-home-bg{
+
+  background:  url('/public/bgcover2.png');
+  background-repeat: no-repeat;
+    background-size: cover;
+  background-position: center;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+}
+
+.mycat{
+  src: url('https://png.pngtree.com/png-clipart/20230511/ourmid/pngtree-isolated-front-view-cat-on-white-background-png-image_7094909.png');
+  background: #ebe6e6;
+  border-radius: 2rem;
+  margin-bottom: 1rem;
+  margin-top: 0;
+}
+
+.my-logo{
+  color: #4d4b4b;
+}
