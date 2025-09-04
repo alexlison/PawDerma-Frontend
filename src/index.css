@@ -34,6 +34,10 @@ code {
   --my-btn-active-bg: var(--my-primary-active);
   --my-btn-shadow: 0 0 0 0.25rem rgba(199, 59, 80, 0.5);
   --my-table-color :#cac0c0;
+  --my-color1:#d8d141f3;
+  --my-color2:#4695d5;
+
+
 
   /* icon */
   --my-icon : var(--my-primary);
@@ -41,6 +45,20 @@ code {
   /* Hyper links */
   --my-hyper-links:var(--my-primary-active);
 }
+
+  .my-color1{
+    background-color: var(--my-color1);
+  }
+    .my-color2{
+    background-color: var(--my-color2);
+  }
+
+  .my-color3{
+    background-color: #85888e;
+  }
+  .my-color4{
+    background-color: #ba8772;
+  }
 
 .my-primary{
   color: var(--my-primary);
@@ -213,6 +231,18 @@ border: 1px solid #e6c3c9;
 
 .my-link:hover {
   text-decoration: underline !important;
+}
+.my-link-new{
+   color: var(--my-hyper-links) !important;
+  font-weight: 500 !important;
+  font-size: 14px;
+  text-decoration: none !important;
+
+}
+.my-link-new:hover{
+    text-decoration: none;
+    color:#ddcece;
+
 }
 
 /* ===== Button Size Variants ===== */
@@ -437,6 +467,8 @@ border-radius: 1rem;
 
 }
 
+
+
 .cat-details-card {
   position: relative;
 }
@@ -479,4 +511,28 @@ border-radius: 1rem;
   border: 2px solid #989494;
   background-color: #c0aeae;
 
+}
+
+.td-badge {
+  font-weight: 400;
+  color: #f2f4f7;
+  padding: 0.2rem;
+  padding-left: 0;
+  padding-right: 0;
+  border-radius: 0.4rem;
+  font-size: 13px;
+  min-width: 0.2cm;
+  min-height: 0.2cm;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+}
+
+.status-badge{
+  padding-top: 6px;
+  padding-bottom: 6px;
+  font-weight: 600;
+  font-size: 12px;
 }
