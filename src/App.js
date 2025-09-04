@@ -14,6 +14,7 @@ import AddCat from './Components/AddCat';
 import Appointments from './Components/Appointments';
 import HomeDefault from './Components/HomeDefault';
 import ViewMyCats from './Components/ViewMyCats';
+import EditCat from './Components/EditCat';
 
 function App() {
   return (
@@ -35,11 +36,12 @@ function App() {
           </Route>
 
               
-              {/* Home Routes with nested pages */}
+            {/* Home Routes with nested pages */}
            <Route path="home" element={<Home />}>
            <Route index element={<HomeDefault />} />
             <Route path='homeDefault' element={<HomeDefault />} />
            <Route path='addcat' element = {<AddCat />} />
+           <Route path='editcat/:id' element = {<EditCat />} />
            <Route path='appointments' element = {<Appointments />} />
            <Route path='viewMyCats' element = {<ViewMyCats />} />
 
