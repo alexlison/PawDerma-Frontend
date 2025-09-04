@@ -15,6 +15,9 @@ import Appointments from './Components/Appointments';
 import HomeDefault from './Components/HomeDefault';
 import ViewMyCats from './Components/ViewMyCats';
 import EditCat from './Components/EditCat';
+import ViewAllCats from './Components/ViewAllCats';
+import DoctorPanel from './Components/DoctorPanel';
+import DoctorDashboard from './Components/DoctorDashboard';
 
 function App() {
   return (
@@ -33,6 +36,14 @@ function App() {
           <Route path="catowners" element={<ViewCatOwners />} />
           <Route path="doctors" element={<ViewDoctors />} />
           <Route path="attenders" element={<ViewAttenders />} />
+          <Route path="cats" element={<ViewAllCats />} />
+          </Route>
+
+          {/* Doctor Routes with nested pages */}
+          <Route path = "doctorPanel" element = {<DoctorPanel />} >
+          <Route index element={<DoctorDashboard />} />
+          <Route path='doctorDashboard' element = {<DoctorDashboard />} />
+
           </Route>
 
               
