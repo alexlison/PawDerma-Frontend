@@ -101,14 +101,14 @@ const ViewDoctors = () => {
     <div className="container-fluid">
       <div className="row">
         <div className="col-12">
-      <div className="d-flex justify-content-between align-items-center mb-3">
+      <div className="d-flex justify-content-between align-items-center mb-3 mt-3">
             <h3 className="bi bi-heart-pulse m-0 fs-5 text-center flex-grow-1">
-              <span className="px-1 fw-semi-bold fs-4">Doctors List</span>
+              <span className="px-1 fw-semi-bold fs-4"> Doctors List</span>
             </h3>
 
 
-            <Link to = "/doctorSignup" className="my-add-btn">
-              <i className="bi bi-plus-circle me-1 icon"></i> 
+            <Link to = "/doctorSignup" className="my-add-btn my-link-new fs-7">
+              <i className="bi bi-plus-circle me-1 icon"> <span className="fs-7">Add Doctor</span></i> 
             </Link>
           </div>
 
@@ -150,7 +150,7 @@ const ViewDoctors = () => {
                       )}
                     </td>
                     <td>{formatDate(value.join_date)}</td>
-                    <td>{value.status ? "Active" : "Inactive"}</td>
+                    <td>{value.status ?  <span className="badge bg-success status-badge">{"Active"}</span> :  <span className="badge bg-danger status-badge">{"Inactive"}</span>}</td>
                     <td
                       className="text-center"
                       onClick={() => handleToggleStatus(value._id)}

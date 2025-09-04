@@ -61,8 +61,6 @@ const ViewAttenders = () => {
     fetchData();
   }, []);
 
- 
-
   //  Format date properly (DD-MM-YYYY)
   const formatDate = (dateString) => {
     if (!dateString) return "N/A";
@@ -83,8 +81,8 @@ const ViewAttenders = () => {
             <h3 className="text-center flex-grow-1 bi bi-person-badge mt-3 mb-1 fs-5"> <span className="px-1 fw-semi-bold fs-4 py-4">  Attenders List</span> 
              </h3>
 
-            <Link to = "/attenderSignup" className="my-add-btn">
-              <i className="bi bi-plus-circle me-1 icon"></i> 
+            <Link to = "/attenderSignup" className="my-add-btn my-link-new mt-4fs-7">
+              <i className="bi bi-plus-circle me-2 icon"> <span className="fs-7">Add Attender</span></i> 
             </Link>
          </div>
           <div className="table-responsive" style={{ fontSize: "0.85rem" }}>
@@ -112,7 +110,8 @@ const ViewAttenders = () => {
                     <td>{value.gender}</td>
                     <td>{value.qualification}</td>
                     <td>{formatDate(value.join_date)}</td>
-                    <td>{value.status ? "Active" : "Inactive"}</td>
+                    <td>{value.status ?  <span className="badge bg-success status-badge">{"Active"}</span> :  <span className="badge bg-danger status-badge">{"Inactive"}</span>}</td>
+
                     <td
                       className="text-center"
                       onClick={() => handleToggleStatus(value._id)}

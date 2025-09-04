@@ -120,7 +120,8 @@ const ViewCatOwners = () => {
                         {value.address.state} - {value.address.pincode}
                       </td>
                       <td><td>{formatDate(value.join_date)}</td></td>
-                      <td>{value.status ? "Active" : "Inactive"}</td>
+                     <td>{value.status ?  <span className="badge bg-success status-badge">{"Active"}</span> :  <span className="badge bg-danger status-badge">{"Inactive"}</span>}</td>
+
                       <td
                         className="position-relative text-center toggle-cell"
                           onClick={() => handleToggleStatus(value._id)}

@@ -7,6 +7,8 @@ const AdminPanel = () => {
   const [token, changeToken] = useState(sessionStorage.getItem("token"));
   const [userType, changeUserType] = useState(sessionStorage.getItem("userType"));
 
+console.log("token -->",token)
+
   useEffect(() => {
     if (!token || userType !== "admin") {
       alert("Access denied! Only admins can access this page.");
