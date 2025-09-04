@@ -42,7 +42,9 @@ code {
   --my-hyper-links:var(--my-primary-active);
 }
 
-
+.my-primary{
+  color: var(--my-primary);
+}
 
 .my-font{
 
@@ -244,9 +246,8 @@ border: 1px solid #e6c3c9;
   background-color: var(--my-primary);
 }
 
-
 .signin-page {
-  background-image: url('https://sdmntprpolandcentral.oaiusercontent.com/files/00000000-2364-620a-8ab0-62df1ded69c9/raw?se=2025-08-28T18%3A23%3A32Z&sp=r&sv=2024-08-04&sr=b&scid=8dce8aef-a3ce-5a14-991e-74596c94e6ca&skoid=60f2aa1f-3685-43ee-be37-d8c8d08d5a64&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2025-08-27T21%3A19%3A00Z&ske=2025-08-28T21%3A19%3A00Z&sks=b&skv=2024-08-04&sig=%2BgyVE3IMUQcJOd19OK%2B/vpQzyXtjMeef52DDrVYooyI%3D');
+  background-image: url('/public/Login_Cover.png');
   background-size: cover;
   background-position: center;
   min-height: 100vh;
@@ -255,9 +256,6 @@ border: 1px solid #e6c3c9;
   justify-content: center;
   align-items: center;
 }
-
-
-
 
 .signin-container {
   position: relative;
@@ -402,4 +400,83 @@ border: 1px solid #e6c3c9;
 
 .my-logo{
   color: #4d4b4b;
+}
+
+
+.my-card{
+
+  margin-top: auto;
+}
+
+.cat-frame {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;       
+  overflow: hidden;         
+  border: 6px solid #dcd6d6; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cat-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;        
+}
+
+.cat-details-card{
+
+background-color: #ebe7e770;
+margin: 1rem;
+padding: 2rem;
+padding-left: 2.5rem;
+
+border-radius: 1rem;
+
+
+}
+
+.cat-details-card {
+  position: relative;
+}
+
+.cat-details-card .edit-icon {
+  position: absolute;
+  top: 7px;
+  margin: 0.8rem;
+  padding: 0.2rem;
+  padding-left: 0.6rem;
+  padding-right: 0.6rem;
+
+  border-radius: 0.7rem;
+  right: 12px;
+  font-size: 1.2rem;
+  font-weight: bolder;
+  color: #d1153a;
+   background-color: #e9dede;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.cat-details-card .edit-icon:hover {
+  color: #e70606;
+  background-color: #e2d8d8;
+}
+
+.my-profile{
+  top: 3.3rem;
+  right: 0;
+
+   width: 5cm;
+    z-Index: 1000; 
+
+}  
+
+.my-box{
+
+  border-radius: 0.2rem;
+  border: 2px solid #989494;
+  background-color: #c0aeae;
+
 }
