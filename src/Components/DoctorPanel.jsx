@@ -61,7 +61,7 @@ const DoctorPanel = () => {
                 onClick={() => setActivePage("doctorProfile")}
               >
                 <Link to="doctorProfile" className="btn nav-link text-dark text-start">
-                  <i className="fa-solid fa-user me-2"></i> My Profile
+                  <i className="fa-solid fa-user me-2 text-secondary"></i> My Profile
                 </Link>
               </li>
               <li
@@ -71,7 +71,7 @@ const DoctorPanel = () => {
                 onClick={() => setActivePage("scheduleSlots")}
               >
                 <Link to="scheduleSlots" className="btn nav-link text-dark text-start">
-                  <i className="bi bi-calendar me-2"></i> Schedule Slots
+                  <i className="fa fa-calendar-days me-2 text-secondary"></i> Schedule Slots
                 </Link>
               </li>
               <li

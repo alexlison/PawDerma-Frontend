@@ -18,6 +18,7 @@ import EditCat from './Components/EditCat';
 import ViewAllCats from './Components/ViewAllCats';
 import DoctorPanel from './Components/DoctorPanel';
 import DoctorDashboard from './Components/DoctorDashboard';
+import DoctorView from './Components/DoctorView';
 
 function App() {
   return (
@@ -43,6 +44,7 @@ function App() {
           <Route path = "doctorPanel" element = {<DoctorPanel />} >
           <Route index element={<DoctorDashboard />} />
           <Route path='doctorDashboard' element = {<DoctorDashboard />} />
+          <Route path='doctorProfile' element = {<DoctorView />} />
 
           </Route>
 
