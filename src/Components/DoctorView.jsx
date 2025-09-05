@@ -87,7 +87,7 @@ const DoctorView = () => {
       <div className="doctor-card shadow-lg p-5 rounded-5 position-relative">
         <button
           className="btn btn-success rounded-circle doctor-edit-btn position-absolute"
-          onClick={() => navigate("/doctorPanel/editDoctor")}
+          onClick={() => navigate("/updateDoctor")}
           title="Edit Profile"
         >
           <i className="fa fa-edit"></i>
@@ -130,7 +130,7 @@ const DoctorView = () => {
             <div className="card shadow-sm border-0 rounded-4 h-100 px-3 py-2 ">
               <div className="card-body">
                 <h6 className="card-title text-my-primary fw-semibold mb-3">
-                  <i className="fa fa-envelope me-2"></i> Contact Info
+                  <i className="fa fa-envelope  text-dark p-1 me-2"></i> Contact Info
                 </h6>
                 <p>
                   <i className="fa fa-envelope me-2 text-secondary"></i>
@@ -148,7 +148,7 @@ const DoctorView = () => {
             <div className="card shadow-sm border-0 rounded-4 h-100 px-3 py-2 ">
               <div className="card-body">
                 <h6 className="card-title text-my-primary fw-semibold mb-3">
-                  <i className="fa fa-briefcase me-2"></i> Job Info
+                  <i className="fa fa-briefcase text-dark p-1 me-2"></i> Job Info
                 </h6>
                 <p>
                   <i className="fa fa-user-md me-2 text-secondary"></i>

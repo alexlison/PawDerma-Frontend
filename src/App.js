@@ -19,6 +19,7 @@ import ViewAllCats from './Components/ViewAllCats';
 import DoctorPanel from './Components/DoctorPanel';
 import DoctorDashboard from './Components/DoctorDashboard';
 import DoctorView from './Components/DoctorView';
+import UpdateDoctor from './Components/UpdateDoctor';
 
 function App() {
   return (
@@ -47,6 +48,8 @@ function App() {
           <Route path='doctorProfile' element = {<DoctorView />} />
 
           </Route>
+
+           <Route path="updateDoctor" element={<UpdateDoctor />} />
 
               
             {/* Home Routes with nested pages */}
