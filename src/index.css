@@ -136,8 +136,11 @@ body {
 }
 
 .admin-box{
+    margin-top: 0.1cm;
   background-color: #3d3b3b;
 }
+
+
 
 .my-btn {
   /* Structure */
@@ -535,4 +538,32 @@ border-radius: 1rem;
   padding-bottom: 6px;
   font-weight: 600;
   font-size: 12px;
+}
+
+
+/* doctor styles */
+.doctor-card {
+  background: #fff;
+  border-radius: 1.5rem;
+}
+
+.doctor-card .card {
+  transition: transform 0.3s ease-in-out;
+  background-color: #f1ecedc8;
+}
+
+.doctor-card .card:hover {
+  transform: translateY(-5px);
+}
+
+.doctor-edit-btn {
+  top: 20px;
+  background-color: var(--my-primary);
+  border: none;
+  right: 20px;
+  width: 40px;
+  height: 38px;
+}
+.doctor-edit-btn:hover{
+  background-color: var(--my-primary-hover);
 }
