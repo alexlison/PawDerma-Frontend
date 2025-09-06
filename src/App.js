@@ -20,6 +20,7 @@ import DoctorPanel from './Components/DoctorPanel';
 import DoctorDashboard from './Components/DoctorDashboard';
 import DoctorView from './Components/DoctorView';
 import UpdateDoctor from './Components/UpdateDoctor';
+import ViewSchedules from './Components/ViewSchedules';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
           <Route index element={<DoctorDashboard />} />
           <Route path='doctorDashboard' element = {<DoctorDashboard />} />
           <Route path='doctorProfile' element = {<DoctorView />} />
+          <Route path='viewSchedules' element = {<ViewSchedules />} />
 
           </Route>
 

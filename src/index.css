@@ -59,6 +59,13 @@ code {
   .my-color4{
     background-color: #ba8772;
   }
+  .my-editnew{
+    background-color: #d8c3c3;
+    border:none;
+  }
+   .my-editnew:hover{
+    background-color: #d4959e;
+   }
 
 .my-primary{
   color: var(--my-primary);
