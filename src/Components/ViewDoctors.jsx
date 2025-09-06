@@ -102,8 +102,9 @@ const ViewDoctors = () => {
       <div className="row">
         <div className="col-12">
       <div className="d-flex justify-content-between align-items-center mb-3 mt-3">
-            <h3 className="bi bi-heart-pulse m-0 fs-5 text-center flex-grow-1">
-              <span className="px-1 fw-semi-bold fs-4"> Doctors List</span>
+            <h3 className="px-1 m-0 fs-5 text-center flex-grow-1">
+              <i className="fa fa-stethoscope "></i>
+             <span className="px-1 fw-semi-bold fs-4 py-4"> Doctors List</span>
             </h3>
 
 
