@@ -21,6 +21,8 @@ import DoctorDashboard from './Components/DoctorDashboard';
 import DoctorView from './Components/DoctorView';
 import UpdateDoctor from './Components/UpdateDoctor';
 import ViewSchedules from './Components/ViewSchedules';
+import AddSchedules from './Components/AddSchedules';
+import UpdateSchedule from './Components/UpdateSchedule';
 
 function App() {
   return (
@@ -49,15 +51,18 @@ function App() {
           <Route path='doctorProfile' element = {<DoctorView />} />
           <Route path='viewSchedules' element = {<ViewSchedules />} />
 
+
           </Route>
+           <Route path='addSchedule' element = {<AddSchedules />} />
 
            <Route path="updateDoctor" element={<UpdateDoctor />} />
+           <Route path="updateSchedule/:id" element={<UpdateSchedule />} />
 
               
             {/* Home Routes with nested pages */}
            <Route path="home" element={<Home />}>
            <Route index element={<HomeDefault />} />
-            <Route path='homeDefault' element={<HomeDefault />} />
+           <Route path='homeDefault' element={<HomeDefault />} />
            <Route path='addcat' element = {<AddCat />} />
            <Route path='editcat/:id' element = {<EditCat />} />
            <Route path='appointments' element = {<Appointments />} />

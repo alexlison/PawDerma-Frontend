@@ -17,7 +17,7 @@ const AttenderSignUp = () => {
       alert("Access denied! Only admins can access this page.");
       navigate("/"); 
     }
-  },[token,userType,navigate]); //dependency array if any of the three change 
+  },[token,userType,navigate]); 
 
   const [input, changeInput] = useState({
     Name: "",
@@ -97,7 +97,8 @@ const AttenderSignUp = () => {
         .post("http://localhost:4000/attenderSignup", newInput,{ headers : { token:token,"Content-Type":"application/json" } })
         .then((response) => {
           if (response.data.Status === "Success") {
-            navigate("/viewAttenders");
+            alert("Attender Added Successfully")
+               navigate("/adminPanel/attenders");
           } else if (response.data.Status === "EmailExists") {
             alert("Email Id Already Exists !");
           } else if (response.data.Status === "PhoneExists") {
@@ -117,6 +118,13 @@ const AttenderSignUp = () => {
 
   return (
     <div>
+   <button
+        onClick={() => navigate(-1)}
+        className="btn btn-link position-absolute top-0 start-0 m-5 fw-semibold text-dark text-decoration-none"
+      >
+        <i className="bi bi-arrow-left-circle-fill fs-5"></i> Back
+      </button>
+
       <div
         className="container p-5 pt-1 pb-4 bg-light border rounded shadow mt-5 mb-5"
         style={{ maxWidth: "770px" }}
