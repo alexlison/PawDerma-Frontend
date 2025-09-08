@@ -24,6 +24,8 @@ import ViewSchedules from './Components/ViewSchedules';
 import AddSchedules from './Components/AddSchedules';
 import UpdateSchedule from './Components/UpdateSchedule';
 
+import SkinPrediction from './Components/SkinPrediction';
+
 function App() {
   return (
     <div>
@@ -66,6 +68,7 @@ function App() {
            <Route path='addcat' element = {<AddCat />} />
            <Route path='editcat/:id' element = {<EditCat />} />
            <Route path='appointments' element = {<Appointments />} />
+           <Route path='skinPrediction' element = {<SkinPrediction />} />
            <Route path='viewMyCats' element = {<ViewMyCats />} />
 
            </Route>
