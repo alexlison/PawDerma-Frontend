@@ -36,6 +36,8 @@ code {
   --my-table-color :#cac0c0;
   --my-color1:#d8d141f3;
   --my-color2:#4695d5;
+  --my-color6:#04be5b;
+  --my-color7:#ea111fd8;
 
 
 
@@ -46,6 +48,12 @@ code {
   --my-hyper-links:var(--my-primary-active);
 }
 
+.my-color7{
+  background-color: var(--my-color7);
+}
+.my-color6{
+  background-color:var(--my-color6) ;
+}
   .my-color1{
     background-color: var(--my-color1);
   }
@@ -150,23 +158,60 @@ body {
 
 
 .my-btn {
-  /* Structure */
   display: inline-block;
   padding: 0.375rem 0.75rem;
   border-radius: 0.25rem;
   
-  /* Colors */
   background-color: var(--my-btn-bg);
   color: var(--my-btn-color);
   border: 1px solid var(--my-btn-border);
   
-  /* Effects */
   transition: all 0.3s ease;
   cursor: pointer;
   text-align: center;
   text-decoration: none;
   user-select: none;
   font-weight: 500;
+}
+
+.my-btnNew{
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  background-color: #3f86b9;
+  border: 1px solid #198ae6;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  font-weight: 500;
+}
+.my-btnNew:hover {
+  background-color: #307dbb;
+  border-color: #bdbfd7;
+  color: var(--my-btn-color);
+}
+.my-book{
+  display: inline-block;
+
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.25rem;
+  background-color: #04be5b;
+  border: 1px solid #cdd2d6;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  font-weight: 500;
+
+}
+.my-book:hover{
+   background-color: #29ce2f;
+  border-color: var(--my-btn-hover-border);
+  color: var(--my-btn-color);
+
 }
 .my-hr{
 color: #8a2938;
@@ -548,11 +593,7 @@ border-radius: 1rem;
 }
 
 
-/* doctor styles */
-.doctor-card {
-  background: #fff;
-  border-radius: 1.5rem;
-}
+
 
 .doctor-card .card {
   transition: transform 0.3s ease-in-out;
@@ -574,3 +615,22 @@ border-radius: 1rem;
 .doctor-edit-btn:hover{
   background-color: var(--my-primary-hover);
 }
+
+.service-card {
+  background: #fff;
+  border: 1px solid #ddd3d5;   /* hidden border initially */
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 14px rgba(17, 17, 17, 0.08);
+  transition: all 0.3s ease-in-out;
+}
+
+.service-card:hover {
+  border-color: #d1d1d1;          /* border becomes visible */
+  transform: translateY(-6px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+}
+
+
+
+
+
