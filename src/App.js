@@ -25,6 +25,7 @@ import AddSchedules from './Components/AddSchedules';
 import UpdateSchedule from './Components/UpdateSchedule';
 
 import SkinPrediction from './Components/SkinPrediction';
+import GeneralBooking from './Components/GeneralBooking';
 
 function App() {
   return (
@@ -69,6 +70,7 @@ function App() {
            <Route path='editcat/:id' element = {<EditCat />} />
            <Route path='appointments' element = {<Appointments />} />
            <Route path='skinPrediction' element = {<SkinPrediction />} />
+           <Route path='generalBooking' element = {<GeneralBooking />} />
            <Route path='viewMyCats' element = {<ViewMyCats />} />
 
            </Route>
