@@ -27,12 +27,12 @@ const GeneralBooking = () => {
     diarrhea: "no",
   });
   const [doctors, setDoctors] = useState([]);
-  const [selectedDoctor, setSelectedDoctor] = useState("");
+  const [selectedSchedule, setSelectedSchedule] = useState(""); // <-- store scheduleId
   const [showDoctors, setShowDoctors] = useState(false);
+  const [errors, setErrors] = useState({}); 
 
   const calculateExperience = (baseExpStr, joinDate) => {
     let baseExp = parseInt(baseExpStr) || 0;
-
     if (!joinDate) return `${baseExp} Year${baseExp !== 1 ? "s" : ""}`;
 
     const join = new Date(joinDate);
@@ -74,12 +74,22 @@ const GeneralBooking = () => {
 
   const handleFormSubmit = async (e) => {
     e.preventDefault();
-
+    setErrors({}); 
     setDoctors([]);
-    setSelectedDoctor("");
+    setSelectedSchedule("");
     setShowDoctors(false);
 
+    const newErrors = {};
+    if (!selectedCat) newErrors.cat = "Please select a cat.";
+    if (!date) newErrors.date = "Please select a date.";
     const yesCount = Object.values(symptoms).filter((s) => s === "yes").length;
+    if (yesCount === 0)
+      newErrors.symptoms = "Please enter at least one valid symptom.";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
 
     try {
       const res = await axios.get(
@@ -98,7 +108,6 @@ const GeneralBooking = () => {
             !doc.doctorId.qualification.toLowerCase().includes("dermatology")
         );
 
-        // Sort by experience
         doctorsList.sort((a, b) =>
           yesCount >= 3
             ? parseInt(b.doctorId.experience) - parseInt(a.doctorId.experience)
@@ -116,8 +125,17 @@ const GeneralBooking = () => {
   };
 
   const handleBooking = async () => {
-    if (!selectedDoctor) {
-      alert("Please select a doctor.");
+    setErrors({});
+    const newErrors = {};
+    if (!selectedCat) newErrors.cat = "Please select a cat.";
+    if (!date) newErrors.date = "Please select a date.";
+    const yesCount = Object.values(symptoms).filter((s) => s === "yes").length;
+    if (yesCount === 0)
+      newErrors.symptoms = "Please enter at least one valid symptom.";
+    if (!selectedSchedule) newErrors.doctor = "Please select a doctor.";
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
       return;
     }
 
@@ -125,9 +143,8 @@ const GeneralBooking = () => {
       const res = await axios.post(
         "http://localhost:4000/generalBooking",
         {
-          catOwner_id: userId,
           catId: selectedCat,
-          doctorId: selectedDoctor,
+          scheduleId: selectedSchedule, // <-- send scheduleId instead of doctorId
           date,
           symptoms,
         },
@@ -137,7 +154,7 @@ const GeneralBooking = () => {
       switch (res.data.Status) {
         case "Success":
           alert("Appointment booked successfully!");
-          navigate("/home/viewMyCats");
+          navigate(`/home/payment/${res.data.appointmentId}`);
           break;
         case "NoAvailableSlot":
           alert("No Available Slots for Selected Doctor!");
@@ -157,6 +174,10 @@ const GeneralBooking = () => {
     }
   };
 
+  const tomorrow = new Date();
+  tomorrow.setDate(tomorrow.getDate() + 1);
+  const minDate = tomorrow.toISOString().split("T")[0];
+
   return (
     <div className="container mt-4">
       <h4 className="m-4 mt-5 mb-5 my-formheading text-center">
@@ -171,10 +192,9 @@ const GeneralBooking = () => {
             <div className="mb-3">
               <label className="form-label fw-bold">Select Cat:</label>
               <select
-                className="form-select"
+                className={`form-select ${errors.cat ? "is-invalid" : ""}`}
                 value={selectedCat}
                 onChange={(e) => setSelectedCat(e.target.value)}
-                required
               >
                 <option value="">-- Select Cat --</option>
                 {cats.map((cat) => (
@@ -183,17 +203,23 @@ const GeneralBooking = () => {
                   </option>
                 ))}
               </select>
+              {errors.cat && (
+                <div className="invalid-feedback">{errors.cat}</div>
+              )}
             </div>
 
             <div className="mb-3">
               <label className="form-label fw-bold">Select Date:</label>
               <input
                 type="date"
-                className="form-control"
+                className={`form-control ${errors.date ? "is-invalid" : ""}`}
                 value={date}
+                min={minDate}
                 onChange={(e) => setDate(e.target.value)}
-                required
               />
+              {errors.date && (
+                <div className="invalid-feedback">{errors.date}</div>
+              )}
             </div>
 
             <div className="mb-3">
@@ -216,11 +242,14 @@ const GeneralBooking = () => {
                   </div>
                 ))}
               </div>
+              {errors.symptoms && (
+                <div className="text-danger small">{errors.symptoms}</div>
+              )}
             </div>
 
             <button
               type="submit"
-              className="btn my-btnNew  mb-3 text-light w-100"
+              className="btn my-btnNew mb-3 text-light w-100"
             >
               Find Doctors
             </button>
@@ -237,7 +266,7 @@ const GeneralBooking = () => {
                     key={doc._id}
                     htmlFor={`doctor-${doc._id}`}
                     className={`d-block p-3 border rounded mb-3 cursor-pointer ${
-                      selectedDoctor === doc.doctorId._id
+                      selectedSchedule === doc._id
                         ? "border-warning bg-light"
                         : ""
                     }`}
@@ -247,10 +276,10 @@ const GeneralBooking = () => {
                       type="radio"
                       id={`doctor-${doc._id}`}
                       name="doctor"
-                      value={doc.doctorId._id}
+                      value={doc._id} // <-- scheduleId
                       className="d-none"
-                      checked={selectedDoctor === doc.doctorId._id}
-                      onChange={(e) => setSelectedDoctor(e.target.value)}
+                      checked={selectedSchedule === doc._id}
+                      onChange={(e) => setSelectedSchedule(e.target.value)}
                     />
 
                     <div>
@@ -268,8 +297,7 @@ const GeneralBooking = () => {
                       </small>
                       <br />
                       <small>
-                        Consultation: {doc.consultationFrom} -{" "}
-                        {doc.consultationTo}
+                        Consultation: {doc.consultationFrom} - {doc.consultationTo}
                       </small>
                       <br />
                       <small>
@@ -284,13 +312,19 @@ const GeneralBooking = () => {
                   </label>
                 ))
               ) : (
-                <p className="text-center text-danger">No doctors available.</p>
+                <p className="text-center m-4 border border-danger  p-3 text-danger">
+                  No doctors available At this Date!
+                </p>
+              )}
+
+              {errors.doctor && (
+                <div className="text-danger small">{errors.doctor}</div>
               )}
 
               <button
                 className="btn my-book text-light border-light mb-3 mt-4 w-100 mt-3"
                 onClick={handleBooking}
-                disabled={!selectedDoctor || doctors.length === 0}
+                disabled={!doctors.length}
               >
                 Book Appointment
               </button>
