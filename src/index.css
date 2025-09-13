@@ -48,6 +48,9 @@ code {
   --my-hyper-links:var(--my-primary-active);
 }
 
+.my-color8{
+  background-color: #e5e4eb;
+}
 .my-color7{
   background-color: var(--my-color7);
 }
@@ -625,7 +628,7 @@ border-radius: 1rem;
 }
 
 .service-card:hover {
-  border-color: #d1d1d1;          /* border becomes visible */
+  border-color: #d1d1d1;         
   transform: translateY(-6px);
   box-shadow: 0 12px 24px rgba(0,0,0,0.15);
 }
