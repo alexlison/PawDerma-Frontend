@@ -28,6 +28,7 @@ import SkinPrediction from './Components/SkinPrediction';
 import GeneralBooking from './Components/GeneralBooking';
 import Payment from './Components/Payment';
 import Receipt from './Components/Receipt';
+import DoctorAppointments from './Components/DoctorAppointments';
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
           <Route path='doctorDashboard' element = {<DoctorDashboard />} />
           <Route path='doctorProfile' element = {<DoctorView />} />
           <Route path='viewSchedules' element = {<ViewSchedules />} />
+          <Route path='doctorAppointments' element = {<DoctorAppointments />} />
 
 
           </Route>
