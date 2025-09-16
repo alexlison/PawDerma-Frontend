@@ -29,6 +29,8 @@ import GeneralBooking from './Components/GeneralBooking';
 import Payment from './Components/Payment';
 import Receipt from './Components/Receipt';
 import DoctorAppointments from './Components/DoctorAppointments';
+import AddPrescription from './Components/AddPrescription';
+import ViewPrescription from './Components/ViewPrescription';
 
 function App() {
   return (
@@ -40,6 +42,8 @@ function App() {
         <Route path='SignUp' element = { <SignUp /> }  />
          <Route path="doctorSignup" element={<DoctorSignUp />} />
          <Route path="attenderSignup" element={<AttenderSignUp />} />
+         
+
         
        
            {/* Admin Routes with nested pages */}
@@ -57,10 +61,13 @@ function App() {
           <Route path='doctorProfile' element = {<DoctorView />} />
           <Route path='viewSchedules' element = {<ViewSchedules />} />
           <Route path='doctorAppointments' element = {<DoctorAppointments />} />
+         
 
 
           </Route>
            <Route path='addSchedule' element = {<AddSchedules />} />
+           <Route path="addPrescription/:appointmentId" element={<AddPrescription />} />
+           <Route path="viewPrescription/:appointmentId" element={<ViewPrescription />} />
 
            <Route path="updateDoctor" element={<UpdateDoctor />} />
            <Route path="updateSchedule/:id" element={<UpdateSchedule />} />
