@@ -31,6 +31,7 @@ import Receipt from './Components/Receipt';
 import DoctorAppointments from './Components/DoctorAppointments';
 import AddPrescription from './Components/AddPrescription';
 import ViewPrescription from './Components/ViewPrescription';
+import ViewMyAppointments from './Components/ViewMyAppointments';
 
 function App() {
   return (
@@ -86,6 +87,7 @@ function App() {
           <Route path='receipt/:appointmentId' element={<Receipt />} />
 
            <Route path='viewMyCats' element = {<ViewMyCats />} />
+           <Route path='viewMyAppointments' element = {<ViewMyAppointments />} />
 
            </Route>
       
