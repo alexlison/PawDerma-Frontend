@@ -32,6 +32,8 @@ import DoctorAppointments from './Components/DoctorAppointments';
 import AddPrescription from './Components/AddPrescription';
 import ViewPrescription from './Components/ViewPrescription';
 import ViewMyAppointments from './Components/ViewMyAppointments';
+import AttenderPanel from './Components/AttenderPanel';
+import AttenderDashboard from './Components/AttenderDashboard';
 
 function App() {
   return (
@@ -72,6 +74,16 @@ function App() {
 
            <Route path="updateDoctor" element={<UpdateDoctor />} />
            <Route path="updateSchedule/:id" element={<UpdateSchedule />} />
+
+
+
+           {/* Attender Routes with nested pages */}
+           <Route path='attenderPanel' element = {<AttenderPanel />} >
+            <Route index element={<AttenderDashboard />} />
+            <Route path='attenderDashboard' element = {<AttenderDashboard />} />
+
+
+           </Route>
 
               
             {/* Home Routes with nested pages */}
