@@ -34,6 +34,7 @@ import ViewPrescription from './Components/ViewPrescription';
 import ViewMyAppointments from './Components/ViewMyAppointments';
 import AttenderPanel from './Components/AttenderPanel';
 import AttenderDashboard from './Components/AttenderDashboard';
+import AttenderView from './Components/AttenderView';
 
 function App() {
   return (
@@ -81,6 +82,7 @@ function App() {
            <Route path='attenderPanel' element = {<AttenderPanel />} >
             <Route index element={<AttenderDashboard />} />
             <Route path='attenderDashboard' element = {<AttenderDashboard />} />
+            <Route path='attenderProfile' element = {<AttenderView />} />
 
 
            </Route>

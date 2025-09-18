@@ -2,18 +2,18 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const DoctorView = () => {
+const AttenderView = () => {
   const navigate = useNavigate();
 
   const [token] = useState(sessionStorage.getItem("token"));
   const [userType] = useState(sessionStorage.getItem("userType"));
   const [userId] = useState(sessionStorage.getItem("userId"));
 
-  const [doctor, setDoctor] = useState(null);
+  const [attender, changeAttender] = useState(null);
 
   useEffect(() => {
-    if (!token || userType !== "doctor") {
-      alert("Access denied! Only doctors can access this page.");
+    if (!token || userType !== "attender") {
+      alert("Access denied! Only attender can access this page.");
       navigate("/");
     }
   }, [token, userType, navigate]);
@@ -21,7 +21,7 @@ const DoctorView = () => {
   const fetchData = () => {
     axios
       .post(
-        "http://localhost:4000/doctorView",
+        "http://localhost:4000/attenderView",
         { userId },
         { headers: { token: token, "Content-Type": "application/json" } }
       )
@@ -31,10 +31,10 @@ const DoctorView = () => {
           navigate("/");
         } else if (response.data.Status === "Error") {
           alert("Error in Fetching Doctor Data !");
-        } else if (response.data.Status === "doctorNotFound") {
-          alert("Doctor Not Found !");
+        } else if (response.data.Status === "attenderNotFound") {
+          alert("Attender Not Found !");
         } else {
-          setDoctor(response.data);
+          changeAttender(response.data);
         }
       })
       .catch((error) => {
@@ -46,28 +46,6 @@ const DoctorView = () => {
     fetchData();
   }, []);
 
-  const calculateExperience = (baseExp, joinDate) => {
-    if (!joinDate) return `${baseExp} Year${baseExp !== 1 ? "s" : ""}`;
-
-    const join = new Date(joinDate);
-    const now = new Date();
-
-    let years = now.getFullYear() - join.getFullYear();
-    let months = now.getMonth() - join.getMonth();
-
-    if (months < 0) {
-      years--;
-      months += 12;
-    }
-
-    const totalYears = baseExp + years;
-    const yearText = `${totalYears} Year${totalYears !== 1 ? "s" : ""}`;
-    const monthText =
-      months > 0 ? ` & ${months} Month${months !== 1 ? "s" : ""}` : "";
-
-    return yearText + monthText;
-  };
-
   const formatDate = (dateString) => {
     if (!dateString) return "N/A";
     const date = new Date(dateString);
@@ -78,7 +56,7 @@ const DoctorView = () => {
     });
   };
 
-  if (!doctor) {
+  if (!attender) {
     return <div className="text-center mt-4">Loading profile...</div>;
   }
 
@@ -87,14 +65,14 @@ const DoctorView = () => {
       <div className="doctor-card shadow-lg p-5 rounded-5 position-relative">
         <button
           className="btn btn-success rounded-circle doctor-edit-btn position-absolute"
-          onClick={() => navigate("/updateDoctor")}
+          onClick={() => navigate("/updateAttender")}
           title="Edit Profile"
         >
           <i className="fa fa-edit"></i>
         </button>
 
         <h3 className="text-center mb-5 fw-bold">
-          Welcome <span className="text-my-primary">{doctor.fname} 😊</span>
+          Welcome <span className="text-my-primary">{attender.Name} 😊</span>
         </h3>
 
         <div className="row g-4">
@@ -105,30 +83,28 @@ const DoctorView = () => {
                   <i className="fa fa-user text-dark p-1 me-2"></i> Personal
                   Info
                 </h6>
-                <p><i className="fa fa-id-badge me-2 text-secondary"></i>
-                  {doctor.fname} {doctor.mname && doctor.mname + " "}{" "}
-                  {doctor.lname}
+                <p>
+                  <i className="fa fa-id-badge me-2 text-secondary"></i>
+                  {attender.Name}
                 </p>
+
                 <p>
                   <i
                     className={`fa ${
-                      doctor.gender === "Male"
+                      attender.gender === "Male"
                         ? "fa-mars"
-                        : doctor.gender === "Female"
+                        : attender.gender === "Female"
                         ? "fa-venus"
                         : "fa-genderless"
                     } me-2 text-secondary`}
                   ></i>
-                  {doctor.gender}
+                  {attender.gender}
                 </p>
+
                 <p>
                   <i className="far fa-calendar-days me-2 text-secondary"></i>
 
-                  {doctor.dob}
-                </p>
-                <p>
-                  <i className="fa fa-graduation-cap me-2 text-secondary"></i>
-                  {doctor.qualification}
+                  {attender.dob}
                 </p>
               </div>
             </div>
@@ -143,11 +119,11 @@ const DoctorView = () => {
                 </h6>
                 <p>
                   <i className="fa fa-envelope me-2 text-secondary"></i>
-                  {doctor.email}
+                  {attender.email}
                 </p>
                 <p>
                   <i className="fa fa-phone me-2 text-secondary"></i>
-                  {doctor.phone}
+                  {attender.phone}
                 </p>
               </div>
             </div>
@@ -161,27 +137,26 @@ const DoctorView = () => {
                   Info
                 </h6>
                 <p>
-                  <i className="fa fa-user-md me-2 text-secondary"></i>
-                  {doctor.specialization}
-                </p>
-                <p>
                   <i className="fa fa-briefcase me-2 text-secondary"></i>
-                  {calculateExperience(
-                    parseInt(doctor.experience) || 0,
-                    doctor.join_date
-                  )}
+                  Job Role : Attender
                 </p>
+
+                <p>
+                  <i className="fa fa-graduation-cap me-2 text-secondary"></i>
+                  {attender.qualification}
+                </p>
+
                 <p>
                   <i className="fa fa-calendar-days me-2 text-secondary">
                     <span className="my-font fs-6 text-secondary p-1">
                       Join_on :
                     </span>
                   </i>
-                  {formatDate(doctor.join_date)}
+                  {formatDate(attender.join_date)}
                 </p>
                 <p>
                   <strong>Status: </strong>
-                  {doctor.status ? (
+                  {attender.status ? (
                     <span className="text-success px-1 py-2 fw-bold">
                       Active
                     </span>
@@ -200,4 +175,4 @@ const DoctorView = () => {
   );
 };
 
-export default DoctorView;
+export default AttenderView;
