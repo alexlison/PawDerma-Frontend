@@ -35,6 +35,7 @@ import ViewMyAppointments from './Components/ViewMyAppointments';
 import AttenderPanel from './Components/AttenderPanel';
 import AttenderDashboard from './Components/AttenderDashboard';
 import AttenderView from './Components/AttenderView';
+import UpdateAttender from './Components/UpdateAttender';
 
 function App() {
   return (
@@ -84,8 +85,8 @@ function App() {
             <Route path='attenderDashboard' element = {<AttenderDashboard />} />
             <Route path='attenderProfile' element = {<AttenderView />} />
 
-
            </Route>
+           <Route path="updateAttender" element={<UpdateAttender />} />
 
               
             {/* Home Routes with nested pages */}
