@@ -94,7 +94,7 @@ const Sidebar = ({ activePage, setActivePage }) => (
   <div className="d-flex flex-column p-3">
     <div className="text-center mb-3">
       <span className="badge admin-box fs-6 px-4 py-3 rounded">
-        <i className="fa fa-stethoscope px-1"></i> Attender Panel
+        <i className="fa fa-id-badge me-1 px-1"></i> Attender Panel
       </span>
     </div>
 
@@ -111,7 +111,7 @@ const Sidebar = ({ activePage, setActivePage }) => (
         className={`my-sidebarhr ${activePage === "attenderProfile" ? "selected" : ""}`}
         onClick={() => setActivePage("attenderProfile")}
       >
-        <Link to="doctorProfile" className="btn nav-link text-dark text-start">
+        <Link to="attenderProfile" className="btn nav-link text-dark text-start">
           <i className="fa-solid fa-user me-2 text-secondary"></i> My Profile
         </Link>
       </li>
