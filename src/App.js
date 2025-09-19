@@ -36,6 +36,7 @@ import AttenderPanel from './Components/AttenderPanel';
 import AttenderDashboard from './Components/AttenderDashboard';
 import AttenderView from './Components/AttenderView';
 import UpdateAttender from './Components/UpdateAttender';
+import ViewAttenderSchedules from './Components/ViewAttenderSchedules';
 
 function App() {
   return (
@@ -84,6 +85,7 @@ function App() {
             <Route index element={<AttenderDashboard />} />
             <Route path='attenderDashboard' element = {<AttenderDashboard />} />
             <Route path='attenderProfile' element = {<AttenderView />} />
+            <Route path='viewAttenderSchedules' element = {<ViewAttenderSchedules />} />
 
            </Route>
            <Route path="updateAttender" element={<UpdateAttender />} />
