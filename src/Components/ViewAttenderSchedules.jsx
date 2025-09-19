@@ -26,16 +26,24 @@ const ViewAttenderSchedules = () => {
         { headers: { token: token, "Content-Type": "application/json" } }
       )
       .then((response) => {
-      
         if (response.data.Status === "Invalid Authentication") {
           alert("Invalid Authentication !");
           navigate("/");
         } else if (response.data.Status === "Error") {
-          alert("Error in Fetching Doctor Schedules !");
+          alert("Error in Fetching Attender Schedules !");
         } else if (response.data.Status === "SchedulesNotFound") {
           alert("No Schedules Found !");
         } else {
-          ChangeSchedules(response.data);
+        
+          const today = new Date();
+          today.setHours(0, 0, 0, 0);
+
+          const upcomingSchedules = response.data.filter((sch) => {
+            const scheduleDate = new Date(sch.date);
+            return scheduleDate >= today;
+          });
+
+          ChangeSchedules(upcomingSchedules);
         }
       })
       .catch((error) => {
@@ -54,13 +62,15 @@ const ViewAttenderSchedules = () => {
           <div className="d-flex justify-content-between align-items-center mb-3">
             <h3 className="text-center flex-grow-1 mt-3 mb-1 fs-5">
               <span className="px-1 fw-semi-bold fs-4 py-4">
-                {" "}
                 <i className="fa fa-calendar-days me-2 p-1 fs-4 text-secondary"></i>
                 My Schedules
               </span>
             </h3>
 
-            <Link to="/addAttenderSchedule" className="my-add-btn my-link-new mt-4 fs-7">
+            <Link
+              to="/addAttenderSchedule"
+              className="my-add-btn my-link-new mt-4 fs-7"
+            >
               <i className="bi bi-plus-circle me-2 icon">
                 <span className="fs-7"> Add Schedule</span>
               </i>
@@ -85,8 +95,8 @@ const ViewAttenderSchedules = () => {
               <tbody>
                 {schedules.length === 0 ? (
                   <tr>
-                    <td colSpan="7" className="text-center">
-                      No Schedules Found!
+                    <td colSpan="8" className="text-center">
+                      No Upcoming Schedules!
                     </td>
                   </tr>
                 ) : (
@@ -103,14 +113,23 @@ const ViewAttenderSchedules = () => {
                       </td>
                       <td>{value.vaccinationFrom}</td>
                       <td>{value.vaccinationTo}</td>
-                      <td> <span className="badge bg-success status-badge px-4 py-2">{value.slots}</span></td>
-                      <td><span className="badge bg-danger status-badge px-4 py-2">{value.remaining_slots} </span></td>
+                      <td>
+                        <span className="badge bg-success status-badge px-4 py-2">
+                          {value.slots}
+                        </span>
+                      </td>
+                      <td>
+                        <span className="badge bg-danger status-badge px-4 py-2">
+                          {value.remaining_slots}
+                        </span>
+                      </td>
                       <td>
                         <button
                           className="btn btn-secondary rounded-circle py-1 px-2 my-editnew"
-                         onClick={() => navigate(`/updateAttenderSchedule/${value._id}`)}
-
-                          title="Edit Profile"
+                          onClick={() =>
+                            navigate(`/updateAttenderSchedule/${value._id}`)
+                          }
+                          title="Edit Schedule"
                         >
                           <i className="fa fa-edit"></i>
                         </button>
