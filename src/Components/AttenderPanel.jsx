@@ -116,10 +116,10 @@ const Sidebar = ({ activePage, setActivePage }) => (
         </Link>
       </li>
       <li
-        className={`my-sidebarhr ${activePage === "viewVaccinations" ? "selected" : ""}`}
-        onClick={() => setActivePage("viewVaccinations")}
+        className={`my-sidebarhr ${activePage === "viewAttenderSchedules" ? "selected" : ""}`}
+        onClick={() => setActivePage("viewAttenderSchedules")}
       >
-        <Link to="viewSchedules" className="btn nav-link text-dark text-start">
+        <Link to="viewAttenderSchedules" className="btn nav-link text-dark text-start">
           <i className="fa fa-calendar-days me-2 text-secondary"></i> Schedule Slots
         </Link>
       </li>
