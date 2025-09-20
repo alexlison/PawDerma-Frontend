@@ -43,6 +43,8 @@ import VaccinationBooking from './Components/VaccinationBooking';
 import AttenderVaccinations from './Components/AttenderVaccinations';
 import MedicalRecords from './Components/MedicalRecords';
 import ViewMedicalRecords from './Components/ViewMedicalRecords';
+import AdminDashboard from './Components/AdminDashboard';
+import UpdateCatOwner from './Components/UpdateCatOwner';
 
 function App() {
   return (
@@ -60,6 +62,7 @@ function App() {
        
            {/* Admin Routes with nested pages */}
           <Route path="adminPanel" element={<AdminPanel />}>
+          <Route path="adminDashboard" element={<AdminDashboard />} />
           <Route path="catowners" element={<ViewCatOwners />} />
           <Route path="doctors" element={<ViewDoctors />} />
           <Route path="attenders" element={<ViewAttenders />} />
@@ -120,6 +123,8 @@ function App() {
            <Route path='viewMyAppointments' element = {<ViewMyAppointments />} />
 
            </Route>
+          <Route path='updateCatOwner' element = {<UpdateCatOwner />} />
+
       
       </Routes>
       </BrowserRouter>
