@@ -1,8 +1,43 @@
+import axios from 'axios';
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, Outlet, useNavigate } from 'react-router-dom';
 
 const Home = () => {
-  const navigate = useNavigate();
+    const navigate = useNavigate();
+    const [token] = useState(sessionStorage.getItem("token"));
+    const [userType] = useState(sessionStorage.getItem("userType"));
+    const [userId] = useState(sessionStorage.getItem("userId"));
+  
+    console.log("token --->", token);
+  
+     const [fullName, setFullName] = useState("User");
+
+    useEffect(() => {
+      if (!token || userType !== "cat_owner") {
+        alert("Access denied! Only cat_owner can access this page.");
+        navigate("/");
+      }
+    }, [token, userType, userId, navigate]);
+
+
+
+      useEffect(() => {
+    if (userId) {
+      axios.post("http://localhost:4000/getCatOwnerById", { id: userId }, {
+        headers: { token }
+      })
+      .then((res) => {
+        if (res.data.Status === "Success") {
+          const user = res.data.data;
+          setFullName(user.fname + " " + user.lname);
+        } else if (res.data.Status === "NotFound") {
+          setFullName("User");
+        }
+      })
+      .catch(err => console.error("Error fetching user:", err));
+    }
+  }, [userId, token]);
+
 
   const [userName] = useState(sessionStorage.getItem("userName") || "User");
 
@@ -71,8 +106,8 @@ const Home = () => {
                   My Cats
                 </Link>
               </li>
-              <li className="nav-item mx-2" onClick={() => setActivePage("myappointments")}>
-                <Link className="nav-link fw-semibold" to="myappointments">
+              <li className="nav-item mx-2" onClick={() => setActivePage("viewMyAppointments")}>
+                <Link className="nav-link fw-semibold" to="viewMyAppointments">
                   My Appointments
                 </Link>
               </li>
@@ -94,7 +129,7 @@ const Home = () => {
                  
                 >
                   
-                  <p className="mb-2 fw-bold m-2 my-box  p-2"> Hi, <span className='my-primary'>{userName}</span> </p>
+                  <p className="mb-2 fw-bold m-2 my-box  p-2"> Hi, <span className='my-primary'>{fullName}</span> </p>
                   <Link
                     to="/editProfile"
                     className="d-flex align-items-center mb-2 text-decoration-none text-dark"
@@ -117,7 +152,7 @@ const Home = () => {
       </div>
 
       {/* Footer */}
-      <footer className="py-4 my-navbar">
+      <footer className="py-4 my-navbar mt-5">
         <div className="container text-center">
           <p className="mb-0">&copy; {new Date().getFullYear()} PawDerma. All rights reserved.</p>
         </div>

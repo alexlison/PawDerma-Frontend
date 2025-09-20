@@ -43,7 +43,6 @@ const AddCat = () => {
     breed: "",
     color: "",
     catOwner_id: userId,
-    imageFormat: "",
     image: "",
   });
 
@@ -205,7 +204,6 @@ const readValues = () => {
                       changeInput({
                         ...input,
                         image: file.name,
-                        imageFormat: file.name.split(".").pop().toLowerCase(),
                       });
                     }
                   }}

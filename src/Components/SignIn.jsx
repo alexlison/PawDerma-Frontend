@@ -64,11 +64,14 @@ const readValues = () =>{
 
         let token = response.data.token
         let userId = response.data.userId
+        let userName = response.data.fname
         let userType = response.data.userType
 
         sessionStorage.setItem("userId",userId)
         sessionStorage.setItem("token",token)
         sessionStorage.setItem("userType",userType)
+        sessionStorage.setItem("userName",userName)
+        
 
            if (userType === "cat_owner") {
             navigate("/home");
@@ -78,7 +81,11 @@ const readValues = () =>{
             navigate("/attenderPanel");
           } else if (userType === "admin") {
             navigate("/adminPanel");
-          } else {
+            
+          } else if (response.data.Status === "Deactivated") 
+            {
+             alert("Account Deactivated. Contact admin@gmail.com");
+             }else {
             navigate("/");
           }
 

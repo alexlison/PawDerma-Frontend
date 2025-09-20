@@ -49,7 +49,7 @@ const Appointments = () => {
                         </div>
                         <h5 className="card-title fw-bold mt-2">Vaccination</h5>
                         <p className="card-text">Protect your cat from common diseases</p>
-                        <Link to="/home/vaccineBooking" className="btn my-btn px-4 mt-3">Book Now</Link>
+                        <Link to="/home/vaccinationBooking" className="btn my-btn px-4 mt-3">Book Now</Link>
                       </div>
                     </div>
                   </div>

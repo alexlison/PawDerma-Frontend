@@ -58,7 +58,6 @@ const Receipt = () => {
           <i className="bi bi-check-circle-fill text-success display-1"></i>
           <h3 className="mt-3">Payment Successful</h3>
           <p className="text-muted">Your booking has been confirmed successfully.</p>
-          <p className="text-muted">Appointment ID: {appointmentId}</p>
         </div>
 
         <div className="d-flex justify-content-end mt-3">

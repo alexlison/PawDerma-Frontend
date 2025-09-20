@@ -37,6 +37,14 @@ const AddSchedules = () => {
       newErrors.consultationTo = "Consultation To is required";
     if (!input.slots) newErrors.slots = "Slots are required";
 
+       if (
+      input.consultationFrom.trim() &&
+      input.consultationTo.trim() &&
+      input.consultationFrom === input.consultationTo
+    ) {
+      newErrors.consultationTo = "From and To time cannot be the same";
+    }
+
     setErrors(newErrors);
 
     return Object.keys(newErrors).length === 0;
@@ -204,7 +212,7 @@ const AddSchedules = () => {
                   className="btn btn-success w-45 px-4 border-overline mt-4 mb-3 p-2 my-btn"
                   onClick={readValues}
                 >
-                  <i className="bi bi-person-plus me-2"></i> Add Schedule
+                  <i className="fa fa-calendar-days me-2"></i> Add Schedule
                 </button>
               </div>
             </div>

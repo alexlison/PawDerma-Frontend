@@ -44,48 +44,15 @@ const DoctorAppointments = () => {
     fetchData();
   }, []);
 
-  const getConsultationTimeStatus = (timeSlot, appointmentDate) => {
-    try {
-      const now = new Date();
-      const today = now.toDateString();
-      const appointmentDay = new Date(appointmentDate).toDateString();
-      
-      if (today !== appointmentDay) {
-        return "not-today";
-      }
-      
-      const [startTimeStr, endTimeStr] = timeSlot.split(' - ');
-      
-      const timeToMinutes = (timeStr) => {
-        const [time, modifier] = timeStr.split(' ');
-        let [hours, minutes] = time.split(':').map(Number);
-        
-        if (modifier === 'PM' && hours !== 12) hours += 12;
-        if (modifier === 'AM' && hours === 12) hours = 0;
-        
-        return hours * 60 + minutes;
-      };
-      
-      const startMinutes = timeToMinutes(startTimeStr);
-      const endMinutes = timeToMinutes(endTimeStr);
-      
-      const currentMinutes = now.getHours() * 60 + now.getMinutes();
-      
-      
-      const buffer = 15;
-      
-      if (currentMinutes < (startMinutes - buffer)) {
-        return "before"; 
-      } else if (currentMinutes > (endMinutes + buffer)) {
-        return "after"; 
-      } else {
-        return "during"; 
-      }
-      
-    } catch (error) {
-      console.error("Error parsing consultation time:", error);
-      return "error";
-    }
+  // Helper to convert date + time to milliseconds
+  const getTimeMs = (dateStr, timeStr) => {
+    const [time, modifier] = timeStr.split(" ");
+    let [hours, minutes] = time.split(":").map(Number);
+    if (modifier === "PM" && hours !== 12) hours += 12;
+    if (modifier === "AM" && hours === 12) hours = 0;
+    const dt = new Date(dateStr);
+    dt.setHours(hours, minutes, 0, 0);
+    return dt.getTime();
   };
 
   return (
@@ -105,151 +72,157 @@ const DoctorAppointments = () => {
       ) : (
         Object.entries(appointments)
           .sort(([dateA], [dateB]) => new Date(dateB) - new Date(dateA))
-          .map(([date, items]) => (
-            <div key={date} className="mb-4">
-              <div className="card shadow-sm border-0">
-                <div className="card-header my-color8 fw-bold">
-                  <i className="bi bi-calendar3 me-2"></i> {date}
-                </div>
+          .map(([date, items]) => {
+            const filteredItems = items.filter(
+              (value) => value.bookingType !== "VACCINATION"
+            );
 
-                <div className="table-responsive">
-                  <table className="table my-table table-borderless table-striped align-middle text-center mb-0">
-                    <thead className="table-light">
-                      <tr>
-                        <th>Sl.No</th>
-                        <th>Cat Name</th>
-                        <th>Breed</th>
-                        <th>Owner Name</th>
-                        <th>Phone</th>
-                        <th>Time</th>
-                        <th>Token</th>
-                        <th>Booking Type</th>
-                        <th>Status</th>
-                        <th>Prescription</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {items.map((value, index) => {
-                        const timeStatus = getConsultationTimeStatus(value.time, date);
-                        
-                        const isCompleted = value.status === "COMPLETED";
-                        const isNotCome = value.status === "NOTCOME";
-                        const isConfirmed = value.status === "CONFIRMED";
-                        
-                        return (
-                          <tr key={index}>
-                            <td>{index + 1}</td>
-                            <td>{value.catName}</td>
-                            <td>{value.breed}</td>
-                            <td>{value.catOwnerName}</td>
-                            <td>{value.phone}</td>
-                            <td>{value.time}</td>
-                            <td>
-                              <span className="badge my-color4">
-                                TN: {value.token}
-                              </span>
-                            </td>
-                            <td>
-                              <span
-                                className={`badge ${
-                                  value.bookingType === "GENERAL"
-                                    ? "my-color2"
-                                    : value.bookingType === "SKIN"
-                                    ? "bg-warning text-dark"
-                                    : value.bookingType === "VACCINATION"
-                                    ? "bg-info text-dark"
-                                    : "bg-secondary"
-                                }`}
-                              >
-                                {value.bookingType}
-                              </span>
-                            </td>
-                            <td>
-                              <span
-                                className={`badge ${
-                                  value.status === "CONFIRMED"
-                                    ? "bg-success"
-                                    : value.status === "COMPLETED"
-                                    ? "bg-danger"
-                                    : value.status === "NOTCOME"
-                                    ? "bg-warning text-dark"
-                                    : "bg-secondary"
-                                }`}
-                              >
-                                {value.status}
-                              </span>
-                            </td>
-                            <td>
-                              {isCompleted ? (
-                                //  COMPLETED → only View Prescription button.
-                                <button
-                                  className="btn btn-outline-success btn-sm"
-                                  onClick={() =>
-                                    navigate(`/viewPrescription/${value._id}`)
-                                  }
-                                  title="View Prescription"
+            if (filteredItems.length === 0) return null;
+
+            return (
+              <div key={date} className="mb-4">
+                <div className="card shadow-sm border-0">
+                  <div className="card-header my-color8 fw-bold">
+                    <i className="bi bi-calendar3 me-2"></i> {date}
+                  </div>
+
+                  <div className="table-responsive">
+                    <table className="table my-table table-borderless table-striped align-middle text-center mb-0">
+                      <thead className="table-light">
+                        <tr>
+                          <th>Sl.No</th>
+                          <th>Cat Name</th>
+                          <th>Breed</th>
+                          <th>Owner Name</th>
+                          <th>Phone</th>
+                          <th>Time</th>
+                          <th>Token</th>
+                          <th>Booking Type</th>
+                          <th>Status</th>
+                          <th>Prescription</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {filteredItems.map((value, index) => {
+                          const isCompleted = value.status === "COMPLETED";
+                          const isNotCome = value.status === "NOTCOME";
+                          const isConfirmed = value.status === "CONFIRMED";
+
+                          const [startTimeStr, endTimeStr] = value.time.split(
+                            " - "
+                          );
+                          const startTimeMs = getTimeMs(date, startTimeStr);
+                          const endTimeMs = getTimeMs(date, endTimeStr);
+                          const nowMs = new Date().getTime();
+
+                          return (
+                            <tr key={index}>
+                              <td>{index + 1}</td>
+                              <td>{value.catName}</td>
+                              <td>{value.breed}</td>
+                              <td>{value.catOwnerName}</td>
+                              <td>{value.phone}</td>
+                              <td>{value.time}</td>
+                              <td>
+                                <span className="badge my-color4">
+                                  TN: {value.token}
+                                </span>
+                              </td>
+                              <td>
+                                <span
+                                  className={`badge ${
+                                    value.bookingType === "GENERAL"
+                                      ? "my-color2"
+                                      : value.bookingType === "SKIN"
+                                      ? "bg-warning text-dark"
+                                      : "bg-secondary"
+                                  }`}
                                 >
-                                  <i className="bi bi-eye-fill"> View</i>
-                                </button>
-                              ) : isNotCome ? (
-                                // NOTCOME → disabled N/A button.
-                                <button
-                                  className="btn btn-outline-secondary btn-sm"
-                                  disabled
-                                  title="Not applicable - Patient did not come"
+                                  {value.bookingType}
+                                </span>
+                              </td>
+                              <td>
+                                <span
+                                  className={`badge ${
+                                    value.status === "CONFIRMED"
+                                      ? "bg-success"
+                                      : value.status === "COMPLETED"
+                                      ? "bg-danger"
+                                      : value.status === "NOTCOME"
+                                      ? "bg-warning text-dark"
+                                      : "bg-secondary"
+                                  }`}
                                 >
-                                  <i className="bi bi-dash-circle"> N/A</i>
-                                </button>
-                              ) : isConfirmed && timeStatus === "during" ? (
-                                //  CONFIRMED + during consultation → enabled Add Prescription button.
-                                <button
-                                  className="btn btn-outline-success btn-sm"
-                                  onClick={() =>
-                                    navigate(`/addPrescription/${value._id}`)
-                                  }
-                                  title="Add Prescription Now"
-                                >
-                                  <i className="bi bi-prescription2"> Add</i>
-                                </button>
-                              ) : isConfirmed && (timeStatus === "before" || timeStatus === "not-today") ? (
-                                //  CONFIRMED + before consultation → disabled Wait button.
-                                
-                                <button
-                                  className="btn btn-outline-warning btn-sm"
-                                  disabled
-                                  title="Consultation not started yet"
-                                >
-                                  <i className="bi bi-clock"> Wait</i>
-                                </button>
-                              ) : isConfirmed && timeStatus === "after" ? (
-                                //  CONFIRMED + after consultation (but not completed) → disabled N/A button.
-                                <button
-                                  className="btn btn-outline-secondary btn-sm"
-                                  disabled
-                                  title="Consultation time has ended"
-                                >
-                                  <i className="bi bi-x-circle"> Ended</i>
-                                </button>
-                              ) : (
-                                // Default for other statuses
-                                <button
-                                  className="btn btn-outline-secondary btn-sm"
-                                  disabled
-                                  title="No action available"
-                                >
-                                  <i className="bi bi-dash-circle"> N/A</i>
-                                </button>
-                              )}
-                            </td>
-                          </tr>
-                        );
-                      })}
-                    </tbody>
-                  </table>
+                                  {value.status}
+                                </span>
+                              </td>
+                              <td>
+                                {isCompleted ? (
+                                  <button
+                                    className="btn btn-outline-success btn-sm"
+                                    onClick={() =>
+                                      navigate(`/viewPrescription/${value._id}`)
+                                    }
+                                    title="View Prescription"
+                                  >
+                                    <i className="bi bi-eye-fill"> View</i>
+                                  </button>
+                                ) : isNotCome ? (
+                                  <button
+                                    className="btn btn-outline-secondary btn-sm"
+                                    disabled
+                                    title="Not applicable - Patient did not come"
+                                  >
+                                    <i className="bi bi-dash-circle"> N/A</i>
+                                  </button>
+                                ) : isConfirmed ? (
+                                  nowMs < startTimeMs ? (
+                                    <button
+                                      className="btn btn-outline-warning btn-sm"
+                                      disabled
+                                      title="Consultation not started yet"
+                                    >
+                                      <i className="bi bi-clock"> Wait</i>
+                                    </button>
+                                  ) : nowMs > endTimeMs ? (
+                                    <button
+                                      className="btn btn-outline-secondary btn-sm"
+                                      disabled
+                                      title="Consultation time has ended"
+                                    >
+                                      <i className="bi bi-x-circle"> Ended</i>
+                                    </button>
+                                  ) : (
+                                    <button
+                                      className="btn btn-outline-success btn-sm"
+                                      onClick={() =>
+                                        navigate(`/addPrescription/${value._id}`)
+                                      }
+                                      title="Add Prescription Now"
+                                    >
+                                      <i className="bi bi-prescription2"> Add</i>
+                                    </button>
+                                  )
+                                ) : (
+                                  <button
+                                    className="btn btn-outline-secondary btn-sm"
+                                    disabled
+                                    title="No action available"
+                                  >
+                                    <i className="bi bi-dash-circle"> N/A</i>
+                                  </button>
+                                )}
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))
+            );
+          })
       )}
     </div>
   );

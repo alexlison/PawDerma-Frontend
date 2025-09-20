@@ -31,7 +31,6 @@ const UpdateDoctor = () => {
     experience: "",
   });
 
-  // ✅ Fetch doctor data
   const fetchData = () => {
     axios
       .get(`http://localhost:4000/getDoctor/${userId}`, {
@@ -210,15 +209,34 @@ const UpdateDoctor = () => {
               value={input.qualification}
               onChange={inputHandler}
             >
-              <option value="" disabled>
-                Select Qualification
-              </option>
-              <option value="BVSc_AH">B.V.Sc & A.H</option>
-              <option value="MVSc">M.V.Sc</option>
-              <option value="MVSc_Dermatology">M.V.Sc Dermatology</option>
-              <option value="MVSc_Surgery">M.V.Sc Surgery</option>
-              <option value="DVM">DVM</option>
-              <option value="PhD_Dermatology">PhD Dermatology</option>
+<option value="" disabled selected>
+                    Select Qualification
+                  </option>
+                  <option value="BVSc_AH">
+                    B.V.Sc & A.H (Bachelor of Veterinary Science & Animal
+                    Husbandry)
+                  </option>
+                  <option value="MVSc">
+                    M.V.Sc (Master of Veterinary Science)
+                  </option>
+                  <option value="MVSc_Dermatology">
+                    M.V.Sc in Veterinary Dermatology
+                  </option>
+                  <option value="MVSc_Surgery">
+                    M.V.Sc in Veterinary Surgery
+                  </option>
+                  <option value="DVM">
+                    DVM (Doctor of Veterinary Medicine)
+                  </option>
+                  <option value="PhD_Dermatology">
+                    PhD in Veterinary Dermatology
+                  </option>
+                  <option value="Diploma_Dermatology">
+                    Diploma in Veterinary Dermatology
+                  </option>
+                  <option value="Diploma_Surgery">
+                    Diploma in Veterinary Surgery
+                  </option>
             </select>
             {errors.qualification && (
               <div className="invalid-feedback">{errors.qualification}</div>
@@ -233,13 +251,26 @@ const UpdateDoctor = () => {
               value={input.specialization}
               onChange={inputHandler}
             >
-              <option value="" disabled>
-                Select Specialization
-              </option>
-              <option value="General Veterinarian">General Veterinarian</option>
-              <option value="Dermatologist">Dermatologist</option>
-              <option value="Veterinary Surgeon">Veterinary Surgeon</option>
-            </select>
+             <option value="" disabled selected>
+                    Select Specialization
+                  </option>
+                  <option value="General Veterinarian">
+                    General Veterinarian
+                  </option>
+                  <option value="Dermatologist">Dermatologist</option>
+                  <option value="Veterinary Surgeon">Veterinary Surgeon</option>
+                  <option value="Feline Specialist">Feline Specialist</option>
+                  <option value="Pathologist">Pathologist</option>
+                  <option value="Veterinary Microbiologist">
+                    Microbiologist
+                  </option>
+                  <option value="Internal Medicine Specialist">
+                    Internal Medicine Specialist
+                  </option>
+                  <option value="Veterinary Parasitologist">
+                    Parasitologist
+                  </option>
+                </select>
             {errors.specialization && (
               <div className="invalid-feedback">{errors.specialization}</div>
             )}
