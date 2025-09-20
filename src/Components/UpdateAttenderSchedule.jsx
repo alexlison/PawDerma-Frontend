@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 
-const UpdateSchedule = () => {
+const UpdateAttenderSchedule = () => {
   const navigate = useNavigate();
   const { id: scheduleId } = useParams();
 
@@ -10,7 +10,7 @@ const UpdateSchedule = () => {
   const [userType] = useState(sessionStorage.getItem("userType"));
 
   useEffect(() => {
-    if (!token || userType !== "doctor") {
+    if (!token || userType !== "attender") {
       alert("Access denied! Only doctor can access this page.");
       navigate("/");
     }
@@ -18,8 +18,8 @@ const UpdateSchedule = () => {
 
   const [input, changeInput] = useState({
     date: "",
-    consultationFrom: "",
-    consultationTo: "",
+    vaccinationFrom: "",
+    vaccinationTo: "",
     slots: "",
   });
 
@@ -28,7 +28,7 @@ const UpdateSchedule = () => {
 
   const fetchData = () => {
     axios
-      .get(`http://localhost:4000/getSchedule/${scheduleId}`, {
+      .get(`http://localhost:4000/getAttenderSchedule/${scheduleId}`, {
         headers: { token, "Content-Type": "application/json" },
       })
       .then((response) => {
@@ -40,8 +40,8 @@ const UpdateSchedule = () => {
           setOldSchedule(schedule);
           changeInput({
             date: schedule.date ? schedule.date.split("T")[0] : "",
-            consultationFrom: schedule.consultationFrom || "",
-            consultationTo: schedule.consultationTo || "",
+            vaccinationFrom: schedule.vaccinationFrom || "",
+            vaccinationTo: schedule.vaccinationTo || "",
             slots: schedule.slots || "",
           });
         }
@@ -58,17 +58,17 @@ const UpdateSchedule = () => {
   const validate = () => {
     const newErrors = {};
     if (!input.date) newErrors.date = "Date is required";
-    if (!input.consultationFrom.trim())
-      newErrors.consultationFrom = "Consultation From is required";
-    if (!input.consultationTo.trim())
-      newErrors.consultationTo = "Consultation To is required";
+    if (!input.vaccinationFrom.trim())
+      newErrors.vaccinationFrom = "Vaccination From is required";
+    if (!input.vaccinationTo.trim())
+      newErrors.vaccinationTo = "Vaccination To is required";
     if (!input.slots) newErrors.slots = "Slots are required";
     if (
-      input.consultationFrom.trim() &&
-      input.consultationTo.trim() &&
-      input.consultationFrom === input.consultationTo
+      input.vaccinationFrom.trim() &&
+      input.vaccinationTo.trim() &&
+      input.vaccinationFrom === input.vaccinationTo
     ) {
-      newErrors.consultationTo = "From and To time cannot be the same";
+      newErrors.vaccinationTo = "From and To time cannot be the same";
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -97,13 +97,17 @@ const UpdateSchedule = () => {
         updatedData.remaining_slots = newRemaining;
       }
       axios
-        .put(`http://localhost:4000/updateSchedule/${scheduleId}`, updatedData, {
-          headers: { token, "Content-Type": "application/json" },
-        })
+        .put(
+          `http://localhost:4000/updateAttenderSchedule/${scheduleId}`,
+          updatedData,
+          {
+            headers: { token, "Content-Type": "application/json" },
+          }
+        )
         .then((response) => {
           if (response.data.Status === "Success") {
             alert("Schedule Updated Successfully");
-            navigate("/doctorPanel/viewSchedules");
+            navigate("/attenderPanel/viewAttenderSchedules");
           } else if (response.data.Status === "ScheduleIdNotFound") {
             alert("Schedule Id NotFound!");
           } else if (response.data.Status === "ScheduleAlreadyExists") {
@@ -178,13 +182,13 @@ const UpdateSchedule = () => {
               </div>
 
               <div className="col-12 col-md-6">
-                <label className="form-label">Consultation From:</label>
+                <label className="form-label">Vaccination From:</label>
                 <select
                   className={`form-control ${
-                    errors.consultationFrom ? "is-invalid" : ""
+                    errors.vaccinationFrom ? "is-invalid" : ""
                   }`}
-                  name="consultationFrom"
-                  value={input.consultationFrom}
+                  name="vaccinationFrom"
+                  value={input.vaccinationFrom}
                   onChange={inputHandler}
                 >
                   <option value="">Select time</option>
@@ -194,21 +198,21 @@ const UpdateSchedule = () => {
                     </option>
                   ))}
                 </select>
-                {errors.consultationFrom && (
+                {errors.vaccinationFrom && (
                   <div className="invalid-feedback">
-                    {errors.consultationFrom}
+                    {errors.vaccinationFrom}
                   </div>
                 )}
               </div>
 
               <div className="col-12 col-md-6">
-                <label className="form-label">Consultation To:</label>
+                <label className="form-label">Vaccination To:</label>
                 <select
                   className={`form-control ${
-                    errors.consultationTo ? "is-invalid" : ""
+                    errors.vaccinationTo ? "is-invalid" : ""
                   }`}
-                  name="consultationTo"
-                  value={input.consultationTo}
+                  name="vaccinationTo"
+                  value={input.vaccinationTo}
                   onChange={inputHandler}
                 >
                   <option value="">Select time</option>
@@ -218,9 +222,9 @@ const UpdateSchedule = () => {
                     </option>
                   ))}
                 </select>
-                {errors.consultationTo && (
+                {errors.vaccinationTo && (
                   <div className="invalid-feedback">
-                    {errors.consultationTo}
+                    {errors.vaccinationTo}
                   </div>
                 )}
               </div>
@@ -256,4 +260,4 @@ const UpdateSchedule = () => {
   );
 };
 
-export default UpdateSchedule;
+export default UpdateAttenderSchedule;

@@ -6,7 +6,7 @@ const Payment = () => {
   const { appointmentId } = useParams();
   const navigate = useNavigate();
 
-  const [amount] = useState(250); // Fixed amount for general/skin
+  const [amount] = useState(250); 
   const [processing, setProcessing] = useState(false);
   const [error, setError] = useState("");
 

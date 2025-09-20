@@ -1,6 +1,21 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 const SkinPrediction = () => {
+  const navigate = useNavigate();
+  const [token] = useState(sessionStorage.getItem("token"));
+  const [userType] = useState(sessionStorage.getItem("userType"));
+  const [userId] = useState(sessionStorage.getItem("userId"));
+
+  console.log("token --->", token);
+
+  useEffect(() => {
+    if (!token || userType !== "cat_owner") {
+      alert("Access denied! Only cat_owner can access this page.");
+      navigate("/");
+    }
+  }, [token, userType, userId, navigate]);
+
   return (
     <div>
         <div className="container  p-5 pt-1 bg-light border rounded shadow mt-5 mb-5"

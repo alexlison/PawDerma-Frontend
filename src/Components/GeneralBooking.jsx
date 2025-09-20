@@ -144,7 +144,7 @@ const GeneralBooking = () => {
         "http://localhost:4000/generalBooking",
         {
           catId: selectedCat,
-          scheduleId: selectedSchedule, // <-- send scheduleId instead of doctorId
+          scheduleId: selectedSchedule, 
           date,
           symptoms,
         },
@@ -153,7 +153,6 @@ const GeneralBooking = () => {
 
       switch (res.data.Status) {
         case "Success":
-          alert("Appointment booked successfully!");
           navigate(`/home/payment/${res.data.appointmentId}`);
           break;
         case "NoAvailableSlot":
@@ -276,7 +275,7 @@ const GeneralBooking = () => {
                       type="radio"
                       id={`doctor-${doc._id}`}
                       name="doctor"
-                      value={doc._id} // <-- scheduleId
+                      value={doc._id} 
                       className="d-none"
                       checked={selectedSchedule === doc._id}
                       onChange={(e) => setSelectedSchedule(e.target.value)}

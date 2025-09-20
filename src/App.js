@@ -39,6 +39,8 @@ import UpdateAttender from './Components/UpdateAttender';
 import ViewAttenderSchedules from './Components/ViewAttenderSchedules';
 import UpdateAttenderSchedule from './Components/UpdateAttenderSchedule';
 import AddAttenderSchedule from './Components/AddAttenderSchedule';
+import VaccinationBooking from './Components/VaccinationBooking';
+import AttenderVaccinations from './Components/AttenderVaccinations';
 
 function App() {
   return (
@@ -88,6 +90,7 @@ function App() {
             <Route path='attenderDashboard' element = {<AttenderDashboard />} />
             <Route path='attenderProfile' element = {<AttenderView />} />
             <Route path='viewAttenderSchedules' element = {<ViewAttenderSchedules />} />
+            <Route path='attenderVaccinations' element = {<AttenderVaccinations />} />
 
            </Route>
            <Route path="updateAttender" element={<UpdateAttender />} />
@@ -105,8 +108,9 @@ function App() {
            <Route path='appointments' element = {<Appointments />} />
            <Route path='skinPrediction' element = {<SkinPrediction />} />
            <Route path='generalBooking' element = {<GeneralBooking />} />
-          <Route path='payment/:appointmentId' element={<Payment />} />
-          <Route path='receipt/:appointmentId' element={<Receipt />} />
+           <Route path='vaccinationBooking' element = {<VaccinationBooking />} />
+           <Route path='payment/:appointmentId' element={<Payment />} />
+           <Route path='receipt/:appointmentId' element={<Receipt />} />
 
            <Route path='viewMyCats' element = {<ViewMyCats />} />
            <Route path='viewMyAppointments' element = {<ViewMyAppointments />} />

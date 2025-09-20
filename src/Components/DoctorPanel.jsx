@@ -8,6 +8,7 @@ const DoctorPanel = () => {
   const [userType] = useState(sessionStorage.getItem("userType"));
   const [activePage, setActivePage] = useState("");
 
+  console.log("Token -->",token)
   useEffect(() => {
     if (!token || userType !== "doctor") {
       alert("Access denied! Only Doctors can access this page.");
@@ -56,13 +57,11 @@ const DoctorPanel = () => {
 
         {/* Main Content */}
         <div className="col offset-lg-2 d-flex flex-column" style={{ height: "100vh" }}>
-          {/* Navbar */}
           <nav
             className="navbar px-3 py-3 shadow-sm my-navbar"
             style={{ flexShrink: 0 }}
           >
             <div className="container-fluid d-flex justify-content-between align-items-center">
-              {/* Sidebar Toggle for Mobile */}
               <button
                 className="btn d-lg-none"
                 type="button"
@@ -81,7 +80,6 @@ const DoctorPanel = () => {
             </div>
           </nav>
 
-          {/* Scrollable Content */}
           <div
             className="flex-grow-1 overflow-auto p-4"
             style={{ backgroundColor: "#f8f9fa" }}
@@ -94,7 +92,6 @@ const DoctorPanel = () => {
   );
 };
 
-/* Sidebar Component */
 const Sidebar = ({ activePage, setActivePage }) => (
   <div className="d-flex flex-column p-3">
     <div className="text-center mb-3">
