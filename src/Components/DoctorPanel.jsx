@@ -134,10 +134,10 @@ const Sidebar = ({ activePage, setActivePage }) => (
         </Link>
       </li>
       <li
-        className={`my-sidebarhr ${activePage === "patientRecords" ? "selected" : ""}`}
-        onClick={() => setActivePage("patientRecords")}
+        className={`my-sidebarhr ${activePage === "medicalRecords" ? "selected" : ""}`}
+        onClick={() => setActivePage("medicalRecords")}
       >
-        <Link to="patientRecords" className="btn nav-link text-dark text-start">
+        <Link to="medicalRecords" className="btn nav-link text-dark text-start">
           <i className="bi bi-file-medical me-2"></i> Patient Records
         </Link>
       </li>

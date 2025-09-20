@@ -41,6 +41,8 @@ import UpdateAttenderSchedule from './Components/UpdateAttenderSchedule';
 import AddAttenderSchedule from './Components/AddAttenderSchedule';
 import VaccinationBooking from './Components/VaccinationBooking';
 import AttenderVaccinations from './Components/AttenderVaccinations';
+import MedicalRecords from './Components/MedicalRecords';
+import ViewMedicalRecords from './Components/ViewMedicalRecords';
 
 function App() {
   return (
@@ -71,6 +73,7 @@ function App() {
           <Route path='doctorProfile' element = {<DoctorView />} />
           <Route path='viewSchedules' element = {<ViewSchedules />} />
           <Route path='doctorAppointments' element = {<DoctorAppointments />} />
+          <Route path='medicalRecords' element = {<MedicalRecords />} />
          
 
 
@@ -81,6 +84,7 @@ function App() {
 
            <Route path="updateDoctor" element={<UpdateDoctor />} />
            <Route path="updateSchedule/:id" element={<UpdateSchedule />} />
+          <Route path="viewMedicalRecords/:catId" element={<ViewMedicalRecords />} />
 
 
 

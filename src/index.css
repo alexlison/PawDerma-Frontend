@@ -48,6 +48,10 @@ code {
   --my-hyper-links:var(--my-primary-active);
 }
 
+.my-color10{
+  background-color: #ede5e5;
+}
+
 .my-color8{
   background-color: #e5e4eb;
 }
@@ -881,4 +885,59 @@ textarea::-webkit-scrollbar-thumb {
 
 textarea::-webkit-scrollbar-thumb:hover {
   background: #a1a1a1;
+}
+
+
+/* Compact table styling */
+.compact-table {
+  font-size: 0.9rem;
+}
+
+.compact-th {
+  font-size: 0.8rem;
+  padding: 8px 7px;
+  
+}
+
+.compact-td {
+  font-size: 0.75rem;
+  padding: 8px 4px;
+}
+
+.badge-small {
+  font-size: 0.65rem;
+}
+
+.btn-small {
+  font-size: 0.65rem;
+  padding: 4px 8px;
+}
+
+.vaccination-card {
+  font-size: 0.65rem;
+}
+
+.icon-small {
+  font-size: 0.7rem;
+}
+
+.text-extra-small {
+  font-size: 0.6rem;
+}
+
+/* Auto-width table for content-based sizing */
+.auto-width-table {
+  width: auto;
+  margin: 0 auto;
+}
+
+.auto-width-table th,
+.auto-width-table td {
+  white-space: nowrap;
+  width: 1%;
+}
+
+.auto-width-table th:last-child,
+.auto-width-table td:last-child {
+  width: auto;
 }
