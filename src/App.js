@@ -45,6 +45,7 @@ import MedicalRecords from './Components/MedicalRecords';
 import ViewMedicalRecords from './Components/ViewMedicalRecords';
 import AdminDashboard from './Components/AdminDashboard';
 import UpdateCatOwner from './Components/UpdateCatOwner';
+import ViewAllAppointments from './Components/ViewAllAppointments';
 
 function App() {
   return (
@@ -66,6 +67,7 @@ function App() {
           <Route path="catowners" element={<ViewCatOwners />} />
           <Route path="doctors" element={<ViewDoctors />} />
           <Route path="attenders" element={<ViewAttenders />} />
+          <Route path="appointments" element={<ViewAllAppointments />} />
           <Route path="cats" element={<ViewAllCats />} />
           </Route>
 
