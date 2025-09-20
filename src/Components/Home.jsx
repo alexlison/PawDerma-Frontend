@@ -131,8 +131,8 @@ const Home = () => {
                   
                   <p className="mb-2 fw-bold m-2 my-box  p-2"> Hi, <span className='my-primary'>{fullName}</span> </p>
                   <Link
-                    to="/editProfile"
-                    className="d-flex align-items-center mb-2 text-decoration-none text-dark"
+                    to="/updateCatOwner"
+                    className="d-flex align-items-center mb-2 text-decoration-none text-dark my-link"
                   >
                     <i className="bi bi-pencil-square m-2 text-success fw-bold me-2"></i> Edit Profile
                   </Link>

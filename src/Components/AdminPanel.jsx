@@ -76,8 +76,8 @@ const Sidebar = ({ activePage, setActivePage }) => (
     </div>
 
     <ul className="nav nav-pills flex-column mt-3 mb-auto gap-2">
-      <li className={`my-sidebarhr ${activePage === "dashboard" ? "selected" : ""}`} onClick={() => setActivePage("dashboard")}>
-        <Link to="dashboard" className="btn nav-link text-dark text-start">
+      <li className={`my-sidebarhr ${activePage === "adminDashboard" ? "selected" : ""}`} onClick={() => setActivePage("adminDashboard")}>
+        <Link to="adminDashboard" className="btn nav-link text-dark text-start">
           <i className="bi bi-speedometer2 me-2"></i> Dashboard
         </Link>
       </li>
